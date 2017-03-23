@@ -1,0 +1,114 @@
+/*
+Now you are given a description of a community where there are n persons and the connections between some pairs of the persons. You can assume that they do form a community and their connection is given such that if you want to find two peoples connectivity information, you will find exactly one path between them.
+ 
+Now maintaining a connection between a pair requires some cost. And unfortunately, the social networking site cannot afford keeping a community which requires a cost of more than K. For example, say A and B and B and C are connected and cost(A, B) = 5, cost(B, C) = 2. Then if K ≥ 7, they can afford this community. Otherwise they cannot.
+ 
+So, they have made a plan, and that is they will break the community. They want to break the community into multiple communities such that each community requires maintenance cost no more than K. But if there are too many communities people may leave the network, that's why they want the minimum number of communities. Since you are the best, they find no option but to ask you.
+ 
+Input
+Input starts with an integer T (≤ 200), denoting the number of test cases.
+ 
+Each case starts with a line containing two integers n (1 ≤ n ≤ 100) and K (1 ≤ K ≤ 100). Each of the next n - 1 lines contains three integers u v w (1 ≤ u, v ≤ n, 1 ≤ w ≤ 100, u ≠ v) meaning that there is a connection between person u and v and the maintenance cost of this connection is w.
+Output
+For each case, print the case number and the minimum number of communities they have to maintain.
+2
+3 1
+1 2 2
+2 3 2
+4 12
+1 2 5
+2 3 10
+1 4 7
+ 
+Case 1: 3
+Case 2: 2
+ 
+*/
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define mx (1<<15)
+#define xx first
+#define yy second
+ 
+typedef pair<int,int>P;
+int n,m;
+vector<P>v[102];
+int righ[102];
+int down[102];
+int cost[102];
+void dfs(int u,int par)
+{
+    int ko=0;
+    int d=-1;
+    for(int j=0; j<v[u].size(); j++)
+    {
+        int x=v[u][j].xx;
+        if(x!=par)
+        {
+            cost[v[u][j].xx]=v[u][j].yy;
+            dfs(x,u);
+            if(d==-1)d=x;
+            righ[ko]=x;
+            ko=x;
+        }
+    }
+    down[u]=d;
+}
+int vis[102][102];
+ 
+int dp(int i,int k)
+{
+    if(i==-1)
+    {
+        return 0;
+    }
+    int &ret=vis[i][k];
+    if(ret!=-1)return ret;
+    ret=mx;
+    int child=1+dp(down[i],m);
+    int naniri=dp(righ[i],k);
+    ret=min(ret,naniri+child);
+    int baki=k-cost[i];
+    for(int j=0; j<=baki; j++)
+    {
+        ret=min(ret,dp(down[i],j)+dp(righ[i],baki-j));
+    }
+    return ret;
+ 
+}
+int main()
+{
+    int tc,cs=0;
+    scanf("%d",&tc);
+    while(tc--)
+    {
+        scanf("%d%d",&n,&m);
+ 
+ 
+        int x,y,z;
+        for(int i=1; i<n; i++)
+        {
+            scanf("%d%d%d",&x,&y,&z);
+            v[x].push_back(make_pair(y,z));
+            v[y].push_back(make_pair(x,z));
+        }
+        memset(cost,0,sizeof cost);
+ 
+        memset(righ,-1,sizeof righ);
+        memset(down,-1,sizeof down);
+        cost[1]=100+1;
+        dfs(1,0);
+        memset(vis,-1,sizeof vis);
+        int ans=dp(1,0);
+        printf("Case %d: %d\n",++cs,ans);
+ 
+        for(int i=0; i<=n; i++)
+        {
+            v[i].clear();
+        }
+    }
+    return 0;
+}
