@@ -1,0 +1,107 @@
+/*
+http://acm.hust.edu.cn/vjudge/contest/view.action?cid=73745#problem/C
+A certain string-processing language allows the programmer to break a string into two pieces. Since this involves copying the old string, it costs n units of time to break a string of n characters into two pieces. Suppose a programmer wants to break a string into many pieces. The order in which the breaks are made can affect the total amount of time used. For example, suppose we wish to break a 20 character string after characters 3, 8, and 10 (numbering the characters in ascending order from the left-hand end, starting from 1). If the breaks are made in left-to-right order, then the first break cost 20 units of time, the second break costs 17 units of time, and the third breaks costs 12 units of time, a total of 49 units of time (see the sample below). If the breaks are made in right-to-left order, then the first break costs 20 units of time, the second break costs 10 units of time, and the third break costs 8 units of time, a total of 38 units of time.
+The cost of making the breaks in left-to-right order:
+thisisastringofchars     (original)
+thi sisastringofchars    (cost:20 units)
+thi sisas tringofchars   (cost:17 units)
+thi sisas tr ingofchars  (cost:12 units)
+                         Total: 49 units.
+The cost of making the breaks in right-to-left order:
+thisisastringofchars     (original)
+thisisastr ingofchars    (cost:20 units)
+thisisas tr ingofchars   (cost:10 units)
+thi sisas tr ingofchars  (cost: 8 units)
+                         Total: 38 units.
+Input:
+There are several test cases! In each test case, the first line contains 2 integers N (2<=N<=10000000) and M (1<=M<=1000, M<N). N is the original length of the string, and M is the number of the breaks. The following lines contain M integers Mi (1<=Mi<N) in ascending order that represent the breaking positions from the string's left-hand end.
+Output:
+For each test case, output in one line the least cost to make all the breakings.
+Sample Input:
+20 3
+3 8 10
+Sample Output:
+37
+*/
+#include<cfloat>
+#include<climits>
+#include<fstream>
+#include<cstdio>
+#include<cstdlib>
+#include<cmath>
+#include<sstream>
+#include<iostream>
+#include<algorithm>
+#include<map>
+#include<cstring>
+#include<string>
+#include<vector>
+#include<queue>
+#include<stack>
+#include<set>
+#define I int
+#define ll long long int
+#define S(a) scanf("%lld",&a)
+#define S2(a,b) scanf("%lld%lld",&a,&b)
+#define S3(a,b,c) scanf("%lld%lld%lld",&a,&b,&c)
+#define PL(a) printf("%d\n",a)
+#define P(a) printf("%lld\n",a)
+#define PT(t) printf("Case %lld: ",t)
+#define SC scanf
+#define PC printf
+#define NL printf("\n")
+#define SET(a) memset(a,0,sizeof a)
+#define SETR(a) memset(a,-1,sizeof a)
+using namespace std;
+ 
+#define mx 999999999999999ll
+ll m;
+ll a[1003];
+ll vis[1003][1003];
+ll vi[1003][1003];
+ll dp(ll l,ll r)
+{
+    if(l==r-1)
+    {
+        vi[l][r]=r;
+        return 0;
+    }
+ 
+    ll &ret=vis[l][r];
+    if(ret!=-1)return ret;
+    ret=mx;
+    ll op=dp(l,r-1);
+    ll op1=dp(l+1,r);
+    op=vi[l][r-1];
+    op1=vi[l+1][r];
+    if(l==r-2)
+    {
+        op=op1=r-1;
+    }
+    for(ll i=op; i<=op1; i++)
+    {
+        ll bet=a[r]-a[l]+dp(l,i)+dp(i,r);
+        if(bet<ret)
+        {
+            ret=bet;
+            vi[l][r]=i;
+        }
+    }
+    return ret;
+}
+int main()
+{
+    ll n;
+    while(S(n)!=EOF)
+    {
+        SETR(vis);
+        SET(vi);
+        S(m);
+        a[0]=0;
+        for(ll i=1; i<=m; i++)S(a[i]);
+        a[m+1]=n;
+        ll res=dp(0,m+1);
+        P(res);
+    }
+    return 0;
+}
