@@ -1,0 +1,80 @@
+/*
+https://uva.onlinejudge.org/external/121/12117.pdf
+*/
+ 
+#include<bits/stdc++.h>
+#define LL long long int
+#define S(a) scanf("%d",&a)
+#define PL(a) printf("%lld\n",a)
+#define PT(t) printf("Case %d: ",t)
+#define SETR(a) memset(a,-1,sizeof a)
+#define SZ(a) ((int)a.size())
+using namespace std;
+ 
+#define MD  1000000000000
+LL a[22][3]=
+{
+    7,0,0,
+    7,2,0,
+    5,7,0,
+    3,7,0,
+    2,7,2,
+    7,5,0,
+    2,7,0,
+    1,3,6,
+    4,6,3,
+    3,6,0,
+    6,3,0,
+    7,6,0,
+    6,7,0,
+    7,4,0,
+    4,7,0,
+    3,6,4,
+    6,3,1,
+    7,1,0,
+    1,7,0,
+    4,7,4,
+    1,7,1,
+    7,3,0
+};
+LL vis[2001][8][8][8];
+LL dp(LL n,LL a1,LL b,LL c)
+{
+    if(n==0&&a1==0&&b==0)
+    {
+        return 1;
+    }
+    if(n==0)return 0;
+    LL &ret=vis[n][a1][b][c];
+    if(ret!=-1)return ret;
+    ret=0;
+    if(a1==7)
+    {
+        ret=(ret+dp(n-1,b,c,0))%MD;
+    }
+    else
+        for(LL i=0; i<22; i++)
+        {
+            if(!(a1&a[i][0])&&!(b&a[i][1])&&!(c&a[i][2]))
+            {
+                ret=(ret+dp(n,a1|a[i][0],b|a[i][1],c|a[i][2]))%MD;
+            }
+        }
+    return ret;
+}
+int main()
+{
+    LL n;
+    int t=0;
+    SETR(vis);
+    while(cin>>n)
+    {
+        if(n==0)break;
+ 
+        LL res=dp(n,0,0,0);
+        t++;
+        PT(t);
+        PL(res);
+    }
+    return 0;
+}
