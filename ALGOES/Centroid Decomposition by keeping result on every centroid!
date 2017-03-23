@@ -1,0 +1,258 @@
+/********************************
+*MAHBUBCSEJU                    *
+*CSE 22                         *
+*JAHANGIRNAGAR UNIVERSITY       *
+*TIMUS:164273FU                 *
+*UVA>>LIGHTOJ>>HUST:mahbubcseju */
+#include <algorithm>
+#include <cstdio>
+#include <sstream>
+#include <cstdlib>
+#include <cctype>
+#include <cmath>
+#include <set>
+#include <queue>
+#include <stack>
+#include <list>
+#include <iostream>
+#include <fstream>
+#include <numeric>
+#include <string>
+#include <vector>
+#include <cstring>
+#include <map>
+#include <iterator>
+#include <deque>
+#include <climits>
+#include <complex>
+#include <bitset>
+#include <limits>
+#define ll long long int
+#define ull unsigned long long int
+#define I(a) scanf("%d",&a)
+#define I2(a,b) scanf("%d%d",&a,&b)
+#define I3(a,b,c) scanf("%d%d%d",&a,&b,&c)
+#define L(a) scanf("%lld",&a)
+#define L2(a,b) scanf("%lld%lld",&a,&b)
+#define L3(a,b,c) scanf("%lld%lld%lld",&a,&b,&c)
+#define PI(a) printf("%d",a)
+#define PL(a) printf("%lld",a)
+#define PT(t) printf("Case %d: ",t)
+#define PB push_back
+#define x first
+#define y second
+#define xx first.first
+#define xy first.second
+#define yx second.first
+#define yy second.second
+#define SC scanf
+#define PC printf
+#define NL printf("\n")
+#define SET(a) memset(a,0,sizeof a)
+#define SETR(a) memset(a,-1,sizeof a)
+#define SZ(a) ((int)a.size())-1
+#define f(i,a,b) for(int i=a;i<=b; i++)
+#define fr(i,a,b) for(int i=a;i<=b; i++)
+#define frr(i,a,b) for(int i=a;i>=b; i--)
+#define frv(i,a)  for(int i=0;i<a.size();i++)
+//#define pi 2.0*acos(0.0)
+#define R(a) freopen(a, "r", stdin);
+#define W(a) freopen(a, "w", stdout);
+#define CB(x) __builtin_popcount(x)
+#define STN(a) stringtonumber<ll>(a)
+#define lol printf("BUG\n")
+#define Endl "\n"
+#define mk make_pair
+using namespace std;
+template <class T> inline T BM(T p, T e, T M) {
+    ll ret = 1;
+    for (; e > 0; e >>= 1) {
+        if (e & 1) ret = (ret * p) % M;
+        p = (p * p) % M;
+    }
+    return (T)ret;
+}
+template <class T> inline T gcd(T a, T b) {
+    if (b == 0)return a;
+    return gcd(b, a % b);
+}
+template <class T> inline T mdINV(T a, T M) {
+    return BM(a, M - 2, M);
+}
+template <class T> inline T PW(T p, T e) {
+    ll ret = 1;
+    for (; e > 0; e >>= 1) {
+        if (e & 1) ret = (ret * p);
+        p = (p * p);
+    }
+    return (T)ret;
+}
+template <class T>string NTS ( T Number ) {
+    stringstream ss;
+    ss << Number;
+    return ss.str();
+}
+template <class T>T stringtonumber ( const string &Text ) {
+    istringstream ss(Text);
+    T result;
+    return ss >> result ? result : 0;
+}
+template <class T>bool ISLEFT ( T a, T b, T c) {
+    if (((a.xx - b.xx) * (b.yy - c.yy) - (b.xx - c.xx) * (a.yy - b.yy)) < 0.0)return 1; //Uporer dike //A,b,c, x okkher ordera sorted
+    else return 0;
+}
+#define MX 200002ll
+#define md 1000000007ll
+#define maxp 2050180000
+#define LO(X) X[p][k]
+#define base 29
+ 
+typedef pair<ll, int > P;
+typedef vector<int> V;
+//////////////////////////
+/////////////////////////
+V adj[MX];
+bool del[MX];
+int subTree[MX];
+int par[MX];
+ll dis[22][MX];
+int L[MX];
+int n,k;
+/*************** Centroid Decomposition of a Tree ***********/
+int tot;
+ 
+///This DFS calculates the size of subtrees
+void Dfs(int u,int p) {
+    subTree[u] = 1;
+    tot++;
+ 
+    for (int i=0; i<adj[u].size(); i++) {
+        int v = adj[u][i];
+ 
+        if (v == p)     continue;
+        if (del[v])     continue;
+ 
+        Dfs(v,u);
+        subTree[u] += subTree[v];
+    }
+}
+ 
+///Find Center using this function
+int GetCenter(int u,int p) {
+    for (int i=0; i<adj[u].size(); i++) {
+        int v = adj[u][i];
+ 
+        if (v == p)     continue;
+        if (del[v])     continue;
+ 
+        if (subTree[v] > tot/2)     return GetCenter(v,u);
+    }
+ 
+    return u;
+}
+ 
+///After finding a center C, this function will
+///Calculate the distance of all other nodes from C
+ll  re[19][MX][5];
+ll ro[19][MX];
+ll  re1[2][MX+2][6];
+ll ro1[2][MX+2];
+ 
+void SetDis(int u,int p,int l,int f,int ce) {
+    dis[f][u] = l;
+    re[f][u][l%k]++;
+    ro[f][u]+=(l/k);
+    for (int i=0; i<adj[u].size(); i++) {
+        int v = adj[u][i];
+ 
+        if (v == p)     continue;
+        if (del[v])     continue;
+ 
+        SetDis(v,u,l+1,f,ce);
+        ro[f][u]+=ro[f][v];
+        for(int j=0; j<k; j++) {
+            re[f][u][j]+=re[f][v][j];
+        }
+    }
+}
+ 
+///Decomposing the tree
+void  Decompose(int u,int p,int l,int ce) {
+    int center=ce;
+    SetDis(center,-1,0,l,center);
+    par[center] = p;
+    del[center] = 1;
+    L[center] = l;
+    ro1[0][center]=ro[l][center];
+    fr(i,0,k-1)re1[0][center][i]=re[l][center][i];
+    for (int i=0; i<adj[center].size(); i++) {
+        int v = adj[center][i];
+        if (del[v])     continue;
+ 
+        tot=0;
+        Dfs(v,-1);
+        int cech=GetCenter(v,-1);
+ 
+        ro1[1][cech]=ro[l][v];
+ 
+        fr(j,0,k-1)re1[1][cech][j]=re[l][v][j];
+ 
+        Decompose(v,center,l+1,cech);
+    }
+ 
+}
+ 
+ll Query(int u) {
+    int v = u;
+    int l = L[u];
+    ll res=0;
+           res+=ro1[0][u];
+    fr(i,1,k-1) {
+        res+=re1[0][u][i];
+    }
+ 
+    ll are[6];
+    while(par[u] != -1) {
+        int x=u;
+        u=par[u];
+        l=L[u];
+        ll dist = dis[l][x];
+        res+=ro1[0][u]-ro1[1][x];
+        fr(i,0,k-1) {
+            are[i]=re1[0][u][i]-re1[1][x][i];
+ 
+        }
+        dist=dis[l][v];
+        fr(i,0,k-1) {
+            ll  xo=(i+dist+k-1)/k;
+            res+=xo*are[i];
+        }
+    }
+ 
+    return res;
+}
+ 
+ 
+int main() {
+    I2(n,k);
+ 
+    fr(i,1,n-1) {
+        int x,y;
+        I2(x,y);
+        adj[x].PB(y);
+        adj[y].PB(x);
+    }
+    tot=0;
+    Dfs(1,-1);
+    int x=GetCenter(1,-1);
+    Decompose(1,-1,0,x);
+    ll an=0;
+ 
+ 
+ 
+    fr(i,1,n) {
+        an+=Query(i);
+    }
+    PL(an/2),NL;
+    return 0;
+}
