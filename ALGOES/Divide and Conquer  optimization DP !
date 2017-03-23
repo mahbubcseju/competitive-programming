@@ -1,0 +1,110 @@
+/*
+Every day, farmer Ion (this is a Romanian name) takes out all his horses, so they may run and play. When they are done,
+ farmer Ion has to take all the horses back to the stables. In order to do this, he places them in a straight line and
+ they follow him to the stables. Because they are very tired, farmer Ion decides that he doesn't want to make the horses
+  move more than they should. So he develops this algorithm: he places the 1st P 1 horses in the first stable, the next
+  P 2 in the 2nd stable and so on. Moreover, he doesn't want any of the K stables he owns to be empty, and no horse must
+  be left outside. Now you should know that farmer Ion only has black or white horses, which don't really get along too
+  well. If there are i black horses and j white horses in one stable, then the coefficient of unhappiness of that stable
+  is i*j. The total coefficient of unhappiness is the sum of the coefficients of unhappiness of every of the K stables.
+Determine a way to place the N horses into the K stables, so that the total coefficient of unhappiness is minimized.
+*/
+/*
+Input:
+On the 1st line there are 2 numbers: N (1 ≤ N ≤ 500) and K (1 ≤ K ≤ N). On the next N lines there are N numbers. The i-th
+of these lines contains the color of the i-th horse in the sequence: 1 means that the horse is black, 0 means that the horse is white.
+6 3
+1
+1
+0
+1
+0
+1
+*/
+/*
+Output:
+  You should only output a single number, which is the minimum possible value for the total coefficient of unhappiness.
+  2
+*/
+#include<cfloat>
+#include<climits>
+#include<fstream>
+#include<cstdio>
+#include<cstdlib>
+#include<cmath>
+#include<sstream>
+#include<iostream>
+#include<algorithm>
+#include<map>
+#include<cstring>
+#include<string>
+#include<vector>
+#include<queue>
+#include<stack>
+#include<set>
+#define ll long long int
+#define S(a) scanf("%lld",&a)
+#define S2(a,b) scanf("%lld%lld",&a,&b)
+#define PL(a) printf("%d\n",a)
+#define P(a) printf("%lld\n",a)
+#define PT(t) printf("Case %lld: ",t)
+#define PC printf
+#define NL printf("\n")
+#define SET(a) memset(a,0,sizeof a)
+#define SETR(a) memset(a,-1,sizeof a)
+using namespace std;
+#define mx 999999999999999ll
+ll n,m;
+ll a[504], k;
+ll vis[504][504];
+void hishab(ll s,ll e,ll x,ll y)
+{
+    if(s>e)
+    {
+        return;
+    }
+    ll mid=(s+e)/2;
+    ll fl=0;
+    ll  ret=mx;
+    for(ll i=x; i<=min(mid-1,y); i++)
+    {
+        ll op=a[mid]-a[i];
+        ll op1=mid-i-op;
+        ll res=op*op1+vis[k][i];
+        if(res<ret)
+        {
+            ret=res;
+            fl=i;
+        }
+    }
+    vis[k+1][mid]=ret;
+    hishab(s,mid-1,x,fl);
+    hishab(mid+1,e,fl,y);
+}
+int main()
+{
+    S2(n,m);
+    a[0]=0;
+    for(ll i=1; i<=n; i++)
+    {
+        ll x;
+        S(x);
+        a[i]=x+a[i-1];
+    }
+    SET(vis);
+    for(ll i=1; i<=n; i++)
+    {
+        ll op=a[i];
+        ll op1=i-a[i];
+        vis[1][i]=op*op1;
+    }
+    for(ll j=2; j<=m; j++)
+    {
+        k=j-1;
+        hishab(1,n,1,n);
+    }
+    ll res=mx;
+    res=vis[m][n];
+    P(res);
+    return 0;
+}
