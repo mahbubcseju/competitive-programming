@@ -1,0 +1,144 @@
+/*
+    Run time : N*log(N)
+*/
+#include<bits/stdc++.h>
+using namespace std;
+#define MX   100007
+#define inf  1000000000
+#define MOD  1000000007
+#define max_node 200005
+ 
+struct HOPCROFT_KARP
+{
+    vector<int>G[max_node];
+    int matching;
+    int match[max_node];
+    int dist[max_node];
+    int n,m;
+    // there are two sets : A & B
+    // n = number of elements in set A (element are numbered as 1,2,3,...n)
+    // m = number of elements in set B (element are numbered as 1,2,3,...m)
+    void init(int n,int m) // initilize with number of elements of A & B
+    {
+        this->n = n;
+        this->m = m;
+        for(int i=0;i<=n+m;i++) G[i].clear(); // clear adjacency list
+    }
+    // add a edge between in x and y
+    // x = index of the node in set A
+    // y = index of the node in set B
+    void add_edge(int x,int y)
+    {
+        G[x].push_back(y+n);
+        G[y+n].push_back(x);
+    }
+    bool bfs()
+    {
+        int i, u, v, len;
+        queue< int > Q;
+        for(i=1; i<=n; i++)
+        {
+            if(match[i]==0)
+            {
+                dist[i] = 0;
+                Q.push(i);
+            }
+            else dist[i] = INT_MAX;
+        }
+ 
+        dist[0] = INT_MAX;
+ 
+        while(!Q.empty())
+        {
+            u = Q.front();
+            Q.pop();
+            if(u!=0)
+            {
+                len = G[u].size();
+                for(i=0; i<len; i++)
+                {
+                    v = G[u][i];
+                    if(dist[match[v]]==INT_MAX)
+                    {
+                        dist[match[v]] = dist[u] + 1;
+                        Q.push(match[v]);
+                    }
+                }
+            }
+        }
+        return (dist[0]!=INT_MAX);
+    }
+ 
+    bool dfs(int u)
+    {
+        int i, v, len;
+        if(u!=0)
+        {
+            len = G[u].size();
+            for(i=0; i<len; i++)
+            {
+                v = G[u][i];
+                if(dist[match[v]]==dist[u]+1)
+                {
+                    if(dfs(match[v]))
+                    {
+                        match[v] = u;
+                        match[u] = v;
+                        return true;
+                    }
+                }
+            }
+            dist[u] = INT_MAX;
+            return false;
+        }
+        return true;
+    }
+ 
+    int find_maximum_matching() // returns number of maximum matching possible
+    {
+        matching = 0;
+ 
+        memset(match,0,sizeof(match));
+ 
+        while(bfs())
+            for(int i=1; i<=n; i++)
+                if(match[i]==0 && dfs(i))
+                    matching++;
+ 
+        return matching;
+    }
+    // show the matching
+    // match[i]  = 0 means i'th element of set A does not matched with any element of set B
+    // match[i] != 0 means i'th element of set A matched with match[i]'th element of set B
+    void show_match()
+    {
+        for(int i=1;i<=n;i++)
+        {
+            printf("%d ----- %d\n",i,match[i]-n);
+        }
+    }
+ 
+}HK;
+ 
+ 
+int main()
+{
+    int edge;
+    int n,m,x,y;
+ 
+    scanf("%d%d%d",&n,&m,&edge);
+ 
+    HK.init(n,m);
+ 
+    for(int i=0;i<edge;i++)
+    {
+        scanf("%d%d",&x,&y);
+        HK.add_edge(x,y);
+    }
+ 
+    printf("%d\n",HK.find_maximum_matching());
+ 
+    HK.show_match();
+ 
+    return 0;
+}
