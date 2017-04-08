@@ -1,0 +1,278 @@
+
+/********************************
+*MAHBUBCSEJU                    *
+*CSE 22                         *
+*JAHANGIRNAGAR UNIVERSITY       *
+*TIMUS:164273FU                 *
+*UVA>>LIGHTOJ>>HUST:mahbubcseju */
+#include<bits/stdc++.h>
+#define ll long long int
+#define ull unsigned long long int
+#define I(a) scanf("%d",&a)
+#define I2(a,b) scanf("%d%d",&a,&b)
+#define I3(a,b,c) scanf("%d%d%d",&a,&b,&c)
+#define L(a) scanf("%lld",&a)
+#define L2(a,b) scanf("%lld%lld",&a,&b)
+#define L3(a,b,c) scanf("%lld%lld%lld",&a,&b,&c)
+#define PI(a) printf("%d",a)
+#define PL(a) printf("%lld",a)
+#define PT(t) printf("Case %d: ",t)
+#define PB push_back
+#define x first
+#define y second
+#define xx first.first
+#define xy first.second
+#define yx second.first
+#define yy second.second
+#define SC scanf
+#define PC printf
+#define NL printf("\n")
+#define SET(a) memset(a,0,sizeof a)
+#define SETR(a) memset(a,-1,sizeof a)
+#define SZ(a) ((int)a.size())-1
+#define f(i,a,b) for(int i=a;i<=b; i++)
+#define fr(i,a,b) for(int i=a;i<=b; i++)
+#define frr(i,a,b) for(int i=a;i>=b; i--)
+#define frv(i,a)  for(int i=0;i<a.size();i++)
+//#define pi 2.0*acos(0.0)
+#define R(a) freopen(a, "r", stdin);
+#define W(a) freopen(a, "w", stdout);
+#define CB(x) __builtin_popcountll(x)
+#define STN(a) stringtonumber<ll>(a)
+#define lol printf("BUG\n")
+#define Endl "\n"
+#define mk make_pair
+using namespace std;
+template <class T> inline T BM(T p, T e, T M) {
+    ll ret = 1;
+    for (; e > 0; e >>= 1) {
+        if (e & 1) ret = (ret * p) % M;
+        p = (p * p) % M;
+    }
+    return (T)ret;
+}
+template <class T> inline T gcd(T a, T b) {
+    if (b == 0)return a;
+    return gcd(b, a % b);
+}
+template <class T> inline T mdINV(T a, T M) {
+    return BM(a, M - 2, M);
+}
+template <class T> inline T PW(T p, T e) {
+    ll ret = 1;
+    for (; e > 0; e >>= 1) {
+        if (e & 1) ret = (ret * p);
+        p = (p * p);
+    }
+    return (T)ret;
+}
+template <class T>string NTS ( T Number ) {
+    stringstream ss;
+    ss << Number;
+    return ss.str();
+}
+template <class T>T stringtonumber ( const string &Text ) {
+    istringstream ss(Text);
+    T result;
+    return ss >> result ? result : 0;
+}
+template <class T>bool ISLEFT ( T a, T b, T c) {
+    if (((a.xx - b.xx) * (b.yy - c.yy) - (b.xx - c.xx) * (a.yy - b.yy)) < 0.0)return 1; //Uporer dike //A,b,c, x okkher ordera sorted
+    else return 0;
+}
+bool Check(int N,int pos){return (bool)(N & (1<<pos));}
+
+typedef pair<ll , ll > P;
+typedef vector<int> V;
+//////////////////////////
+/////////////////////////
+#define md 1000000007ll
+#define mx 1000000
+#define LL ll
+LL Multi(LL a,LL b,LL Mod) {
+    LL ans=0;
+
+    a %= Mod;
+    b %= Mod;
+
+    while (b) {
+        if (b&1)        ans = Mod-ans>a?ans+a:ans-Mod+a;
+
+        b>>=1;
+
+        a = (Mod-a)>a?a+a:a-Mod+a;
+    }
+
+    return ans;
+}
+
+LL _BigMod(LL a,LL b,LL Mod) {
+    LL ans = 1;
+
+    a %= Mod;
+
+    while(b) {
+        if (b&1)        ans = Multi(ans,a,Mod);
+
+        b >>= 1;
+
+        a = Multi(a,a,Mod);
+    }
+
+    return ans;
+}
+
+bool RobinMillar(LL x) {
+    if (x == 2) return true;
+    if (x == 1) return false;
+    if (x%2 == 0)return false;
+
+    for (int i=1; i<=10; i++) {
+        LL y = rand()%(x-4) + 2;
+        y = _BigMod(y,x-1,x);
+
+        if (y != 1) return 0;
+    }
+
+    return 1;
+}
+
+LL PollardRho(LL n,LL c) {
+    if (n == 1)         return n;
+    if (n%2 == 0)       return 2;
+
+    srand(time(NULL));
+
+    LL x = 2;
+    LL y = x;
+    LL d = 1;
+
+    while(d==1) {
+        x = (_BigMod(x,2LL,n) + c + n)%n;
+        y = (_BigMod(y,2LL,n) + c + n)%n;
+        y = (_BigMod(y,2LL,n) + c + n)%n;
+
+
+        d = __gcd(abs(x-y),n);
+
+        if (d == n) return PollardRho(n,c+1);
+    }
+
+    return d;
+}
+
+vector<ll> fact;
+vector < pair < LL , LL > > pww;
+
+void Fact(LL n) {
+    if (n == 1)         return;
+    if (RobinMillar(n)) {
+        fact.PB(n);
+        return ;
+    }
+
+    LL d = PollardRho(n,2);
+
+    Fact(d);
+    Fact(n/d);
+}
+
+vector<ll> divs;
+
+void  Divisors(int p,LL x) {
+    if (p == (int)pww.size()) {
+        divs.PB(x);
+        return ;
+    }
+
+    Divisors(p+1,x);
+    LL y = 1;
+
+    for (int i=1; i<=pww[p].y; i++) {
+        y *= pww[p].x;
+        Divisors(p+1,y*x);
+    }
+}
+
+void FindFact(LL x) {
+    fact.clear();
+    pww.clear();
+
+    Fact(x);
+    sort(fact.begin(),fact.end());
+
+    int cnt = 1;
+
+    for (int i=1; i<(int)fact.size(); i++) {
+        if (fact[i] != fact[i-1]) {
+            pww.PB( mk(fact[i-1],cnt) );
+            cnt = 0;
+        }
+
+        cnt++;
+    }
+
+    if (fact.size())pww.PB( mk(fact.back(),cnt) );
+}
+
+map<LL,LL> DP;
+
+int main() {
+    int t;
+    I(t);
+    int cs = 0;
+    DP[1] = 1;
+
+    while(t--) {
+        LL x;
+        L(x);
+
+        if (DP.count(x)) {
+            PC("Case %d: %lld\n",++cs,DP[x]);
+            continue;
+        }
+
+        FindFact(x);
+        divs.clear();
+        Divisors(0,1);
+
+        LL sum = 0;
+
+        for (int i=0; i<divs.size(); i++) {
+            vector<int> baki;
+
+            for (int j=0; j<pww.size(); j++) {
+                int cnt = 0;
+                LL xx1 = pww[j].x;
+
+                while(divs[i] % xx1 == 0) {
+                    cnt++;
+                    xx1 *= pww[j].x;
+                }
+
+                if (pww[j].y - cnt)
+                    baki.PB(pww[j].y - cnt);
+            }
+
+            LL tot = 0;
+
+            for (int j=0; j<(1<<baki.size()); j++) {
+                LL ans = 1;
+
+                for (int k=0; k<baki.size(); k++) {
+                    if (Check(j,k)) ans *= baki[k];
+                    else            ans *= (baki[k]+1);
+                }
+
+                tot += ans;
+            }
+
+            sum += divs[i]*tot;
+        }
+
+        PC("Case %d: %lld\n",++cs,sum);
+        DP[x] = sum;
+
+    }
+    return 0;
+}
