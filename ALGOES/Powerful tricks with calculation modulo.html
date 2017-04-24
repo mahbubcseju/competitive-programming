@@ -1,0 +1,2453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0074)https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:black;text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}</style><link type="text/css" rel="stylesheet" href="./Powerful tricks with calculation modulo_files/css"><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style{font-family:Roboto,Arial,sans-serif;font-size:11px;font-weight:400;text-decoration:none}.gm-style img{max-width:none}</style>
+        
+        <meta name="description" content=" 
+[1]: https://en.wikipedia.org/wiki/Euler%27s_totient_function [2]: https://en.wikipedia.org/wiki/Exponentiation [3]: https://en.wikipedia.org/wiki/Euler%27s_theorem [4]: https://en.wikipedia.org/wiki/Euler%27s_totient_function [5]: https://en.wikipedia.org/wiki/Exponentiation_by_squaring [6]: https://en.wikipedia.org/wiki/Euler%27s_theorem &lt;p&gt;Here I&#39;ve prepared some really cool tricks which can help you to find the answer modulo some number. ...
+ HackerEarth is a network of top developers across the world. Developers participate in online coding challenges and hackathons, solve problems and discover the best jobs.">
+        <link rel="canonical" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/">
+        <meta name="msvalidate.01" content="1BF418E510B5A17A2D71685C571BF4EB">
+
+        <!-- Errorception tracking snippet -->
+        <script type="application/javascript" async="" defer="" src="./Powerful tricks with calculation modulo_files/track.js"></script><script src="./Powerful tricks with calculation modulo_files/55ba39a81acd32ac7d0002d4.js" async=""></script><script src="./Powerful tricks with calculation modulo_files/cb=gapi.loaded_1" async=""></script><script src="./Powerful tricks with calculation modulo_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./Powerful tricks with calculation modulo_files/recaptcha__en.js"></script><script type="text/javascript" async="" src="./Powerful tricks with calculation modulo_files/5F90ycbP4JOg1fOUoELScA.js"></script><script type="text/javascript" async="" src="./Powerful tricks with calculation modulo_files/plusone.js" gapi_processed="true"></script><script id="twitter-wjs" src="./Powerful tricks with calculation modulo_files/widgets.js"></script><script id="facebook-jssdk" src="./Powerful tricks with calculation modulo_files/all.js"></script><script type="text/javascript" async="" src="./Powerful tricks with calculation modulo_files/mixpanel-2.2.min.js"></script><script async="" src="./Powerful tricks with calculation modulo_files/analytics.js"></script><script async="" src="./Powerful tricks with calculation modulo_files/fbevents.js"></script><script>
+            (function(_,e,rr,s){_errs=[s];var c=_.onerror;_.onerror=function(){var a=arguments;_errs.push(a);
+            c&&c.apply(this,a)};var b=function(){var c=e.createElement(rr),b=e.getElementsByTagName(rr)[0];
+            c.src="//beacon.errorception.com/"+s+".js";c.async=!0;b.parentNode.insertBefore(c,b)};
+            _.addEventListener?_.addEventListener("load",b,!1):_.attachEvent("onload",b)})
+            (window,document,"script","55ba39a81acd32ac7d0002d4");
+        </script>
+
+        <!-- MathJax -->
+        <script type="text/x-mathjax-config;executed=true">
+            MathJax.Hub.Config({messageStyle: "none",
+                tex2jax: {
+                    inlineMath: [['$$','$$']],
+                    displayMath: [['$$$', '$$$']],
+                    preview: "none"
+            }
+        });
+        </script>
+        <script type="text/javascript" async="" src="./Powerful tricks with calculation modulo_files/MathJax.js">
+        </script>
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/MathJax(1).js"></script>
+
+        <script type="text/javascript">
+            window.addEventListener("load", function() {
+                        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                    });
+        </script>
+
+        
+<meta name="google-site-verification" content="ozqyeStBcz4eehbY9Ohb_IUQcA4y8BKzzDCT-H1QPPc">
+
+
+        <title>   Powerful tricks with calculation modulo  | HackerEarth  </title>
+
+        
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<!-- Facebook tags -->
+<meta property="fb:app_id" content="190817380995032">
+<meta property="og:title" content="Powerful tricks with calculation modulo - Boris Sokolov">
+<meta property="og:image" content="https://d320jcjashajb2.cloudfront.net/media/avatars/sokolov/resized/200/4283d43color.jpg">
+<meta property="og:description" content="[1]: https://en.wikipedia.org/wiki/Euler%27s_totient_function [2]: https://en.wikipedia.org/wiki/Exponentiation [3]: https://en.wikipedia.org/wiki/Euler%27s_theorem [4]: https://en.wikipedia.org/wiki/Euler%27s_totient_function [5]: https://en.wikipedia.org/wiki/Exponentiation_by_squaring [6]: https://en.wikipedia.org/wiki/Euler%27s_theorem &lt;p&gt;Here I&#39;ve prepared some really cool tricks which can help you to find the answer modulo some number. And I&#39;m sure that this note is helpful not only ...">
+<meta property="og:url" content="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/">
+<meta property="og:site_name" content="HackerEarth">
+<meta property="og:type" content="website">
+<!-- end Facbook tags -->
+
+<!-- Twitter tags -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@HackerEarth">
+<meta name="twitter:url" content="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/">
+<meta name="twitter:title" content="Powerful tricks with calculation modulo">
+<!-- end Twitter tags -->
+
+        
+        
+        <link rel="shortcut icon" href="./Powerful tricks with calculation modulo_files/HE_identity.png" type="image/x-icon">
+        
+        
+        <link rel="stylesheet" href="./Powerful tricks with calculation modulo_files/base_common_combined.css">
+        <link rel="stylesheet" href="./Powerful tricks with calculation modulo_files/tipTip.css">
+        <link rel="stylesheet" href="./Powerful tricks with calculation modulo_files/offline-theme-slide.css">
+        <link rel="stylesheet" type="text/css" href="./Powerful tricks with calculation modulo_files/jquery.mCustomScrollbar.min.css">
+
+        
+
+        <link rel="stylesheet" href="./Powerful tricks with calculation modulo_files/font-awesome.min.css">
+        <link href="./Powerful tricks with calculation modulo_files/css(1)" rel="stylesheet" type="text/css">
+        <link href="./Powerful tricks with calculation modulo_files/css(2)" rel="stylesheet" type="text/css">
+        
+
+        
+<link rel="stylesheet" type="text/css" href="./Powerful tricks with calculation modulo_files/polls.css">
+<link rel="stylesheet" type="text/css" href="./Powerful tricks with calculation modulo_files/pagedown.css">
+<link rel="stylesheet" type="text/css" href="./Powerful tricks with calculation modulo_files/notes.css">
+<link rel="stylesheet" type="text/css" href="./Powerful tricks with calculation modulo_files/nice_threadedcomments.css">
+<link href="./Powerful tricks with calculation modulo_files/prettify.css" type="text/css" rel="stylesheet">
+
+
+        <!-- For chartbeat -->
+        <script type="text/javascript">var _sf_startpt=(new Date()).getTime();</script>
+
+        <!-- Make the static variable available for all js files -->
+        <script>
+            var STATIC_URL = "https://hackerearth.global.ssl.fastly.net/static/";
+        </script>
+
+        <!-- Store CSRF_COOKIE -->
+        <script>
+            var CSRF_COOKIE_USED = "True";
+            var CSRF_COOKIE = "mMztJVzV4zcLm6J2aqx9pz3adc2Lgi3E";
+        </script>
+
+        
+
+    <style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><script type="text/javascript" charset="utf-8" async="" src="./Powerful tricks with calculation modulo_files/button.552a34de542f2646ca0c08da6760c341.js"></script><style type="text/css" media="screen">.uv-icon{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;display:inline-block;cursor:pointer;position:relative;-moz-transition:all 300ms;-o-transition:all 300ms;-webkit-transition:all 300ms;transition:all 300ms;width:39px;height:39px;position:fixed;z-index:100002;opacity:0.8;-moz-transition:opacity 100ms;-o-transition:opacity 100ms;-webkit-transition:opacity 100ms;transition:opacity 100ms}.uv-icon.uv-bottom-right{bottom:10px;right:12px}.uv-icon.uv-top-right{top:10px;right:12px}.uv-icon.uv-bottom-left{bottom:10px;left:12px}.uv-icon.uv-top-left{top:10px;left:12px}.uv-icon.uv-is-selected{opacity:1}.uv-icon svg{width:39px;height:39px}.uv-popover{font-family:sans-serif;font-weight:100;font-size:13px;color:black;position:fixed;z-index:100001}.uv-popover-content{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;background:white;position:relative;width:325px;height:325px;-moz-transition:background 200ms;-o-transition:background 200ms;-webkit-transition:background 200ms;transition:background 200ms}.uv-bottom .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) 0 -10px 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) 0 -10px 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) 0 -10px 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-top .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) 0 10px 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) 0 10px 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) 0 10px 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-left .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) 10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) 10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) 10px 0 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-right .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) -10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) -10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) -10px 0 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-ie8 .uv-popover-content{position:relative}.uv-ie8 .uv-popover-content .uv-popover-content-shadow{display:block;background:black;content:'';position:absolute;left:-15px;top:-15px;width:100%;height:100%;filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=15,MakeShadow=true,ShadowOpacity=0.30);z-index:-1}.uv-popover-tail{border:9px solid transparent;width:0;z-index:10;position:absolute;-moz-transition:border-top-color 200ms;-o-transition:border-top-color 200ms;-webkit-transition:border-top-color 200ms;transition:border-top-color 200ms}.uv-top .uv-popover-tail{bottom:-20px;border-top:11px solid white}.uv-bottom .uv-popover-tail{top:-20px;border-bottom:11px solid white}.uv-left .uv-popover-tail{right:-20px;border-left:11px solid white}.uv-right .uv-popover-tail{left:-20px;border-right:11px solid white}.uv-popover-loading{background:white;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;position:absolute;width:100%;height:100%;left:0;top:0}.uv-popover-loading-text{position:absolute;top:50%;margin-top:-0.5em;width:100%;text-align:center}.uv-popover-iframe-container{height:100%}.uv-popover-iframe{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;overflow:hidden}.uv-is-hidden{display:none}.uv-is-invisible{display:block !important;visibility:hidden !important}.uv-is-transitioning{display:block !important}.uv-no-transition{-moz-transition:none !important;-webkit-transition:none !important;-o-transition:color 0 ease-in !important;transition:none !important}.uv-fade{opacity:1;-moz-transition:opacity 200ms ease-out;-o-transition:opacity 200ms ease-out;-webkit-transition:opacity 200ms ease-out;transition:opacity 200ms ease-out}.uv-fade.uv-is-hidden{opacity:0}.uv-scale-top,.uv-scale-top-left,.uv-scale-top-right,.uv-scale-bottom,.uv-scale-bottom-left,.uv-scale-bottom-right,.uv-scale-right,.uv-scale-right-top,.uv-scale-right-bottom,.uv-scale-left,.uv-scale-left-top,.uv-scale-left-bottom,.uv-slide-top,.uv-slide-bottom,.uv-slide-left,.uv-slide-right{opacity:1;-moz-transition:all 80ms ease-out;-o-transition:all 80ms ease-out;-webkit-transition:all 80ms ease-out;transition:all 80ms ease-out}.uv-scale-top.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(-15%);-ms-transform:scale(0.8) translateY(-15%);-webkit-transform:scale(0.8) translateY(-15%);transform:scale(0.8) translateY(-15%)}.uv-scale-top-left.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(-15%) translateX(-10%);-ms-transform:scale(0.8) translateY(-15%) translateX(-10%);-webkit-transform:scale(0.8) translateY(-15%) translateX(-10%);transform:scale(0.8) translateY(-15%) translateX(-10%)}.uv-scale-top-right.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(-15%) translateX(10%);-ms-transform:scale(0.8) translateY(-15%) translateX(10%);-webkit-transform:scale(0.8) translateY(-15%) translateX(10%);transform:scale(0.8) translateY(-15%) translateX(10%)}.uv-scale-bottom.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(15%);-ms-transform:scale(0.8) translateY(15%);-webkit-transform:scale(0.8) translateY(15%);transform:scale(0.8) translateY(15%)}.uv-scale-bottom-left.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(15%) translateX(-10%);-ms-transform:scale(0.8) translateY(15%) translateX(-10%);-webkit-transform:scale(0.8) translateY(15%) translateX(-10%);transform:scale(0.8) translateY(15%) translateX(-10%)}.uv-scale-bottom-right.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(15%) translateX(10%);-ms-transform:scale(0.8) translateY(15%) translateX(10%);-webkit-transform:scale(0.8) translateY(15%) translateX(10%);transform:scale(0.8) translateY(15%) translateX(10%)}.uv-scale-right.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(15%);-ms-transform:scale(0.8) translateX(15%);-webkit-transform:scale(0.8) translateX(15%);transform:scale(0.8) translateX(15%)}.uv-scale-right-top.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(15%) translateY(-10%);-ms-transform:scale(0.8) translateX(15%) translateY(-10%);-webkit-transform:scale(0.8) translateX(15%) translateY(-10%);transform:scale(0.8) translateX(15%) translateY(-10%)}.uv-scale-right-bottom.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(15%) translateY(10%);-ms-transform:scale(0.8) translateX(15%) translateY(10%);-webkit-transform:scale(0.8) translateX(15%) translateY(10%);transform:scale(0.8) translateX(15%) translateY(10%)}.uv-scale-left.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(-15%);-ms-transform:scale(0.8) translateX(-15%);-webkit-transform:scale(0.8) translateX(-15%);transform:scale(0.8) translateX(-15%)}.uv-scale-left-top.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(-15%) translateY(-10%);-ms-transform:scale(0.8) translateX(-15%) translateY(-10%);-webkit-transform:scale(0.8) translateX(-15%) translateY(-10%);transform:scale(0.8) translateX(-15%) translateY(-10%)}.uv-scale-left-bottom.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(-15%) translateY(10%);-ms-transform:scale(0.8) translateX(-15%) translateY(10%);-webkit-transform:scale(0.8) translateX(-15%) translateY(10%);transform:scale(0.8) translateX(-15%) translateY(10%)}.uv-slide-top.uv-is-hidden{-moz-transform:translateY(-100%);-ms-transform:translateY(-100%);-webkit-transform:translateY(-100%);transform:translateY(-100%)}.uv-slide-bottom.uv-is-hidden{-moz-transform:translateY(100%);-ms-transform:translateY(100%);-webkit-transform:translateY(100%);transform:translateY(100%)}.uv-slide-left.uv-is-hidden{-moz-transform:translateX(-100%);-ms-transform:translateX(-100%);-webkit-transform:translateX(-100%);transform:translateX(-100%)}.uv-slide-right.uv-is-hidden{-moz-transform:translateX(100%);-ms-transform:translateX(100%);-webkit-transform:translateX(100%);transform:translateX(100%)}
+</style><style type="text/css" media="screen">.uv-icon:hover{opacity:1}</style><style type="text/css" media="print">#uvTab,.uv-tray,.uv-icon,.uv-popover,.uv-bubble{display:none!important}</style><script type="text/javascript" charset="UTF-8" src="./Powerful tricks with calculation modulo_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="./Powerful tricks with calculation modulo_files/map.js"></script><script type="text/javascript" charset="UTF-8" src="./Powerful tricks with calculation modulo_files/util.js"></script><script type="text/javascript" charset="UTF-8" src="./Powerful tricks with calculation modulo_files/marker.js"></script><script type="text/javascript" charset="UTF-8" src="./Powerful tricks with calculation modulo_files/infowindow.js"></script><script type="text/javascript" charset="UTF-8" src="./Powerful tricks with calculation modulo_files/onion.js"></script><script type="text/javascript" charset="UTF-8" src="./Powerful tricks with calculation modulo_files/stats.js"></script><script type="text/javascript" charset="UTF-8" src="./Powerful tricks with calculation modulo_files/controls.js"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style><script src="./Powerful tricks with calculation modulo_files/comments_ajaxify.js" crossorigin="anonymous"></script><script src="./Powerful tricks with calculation modulo_files/realtime.js" crossorigin="anonymous"></script><script src="./Powerful tricks with calculation modulo_files/moment.min.js" crossorigin="anonymous"></script><script src="./Powerful tricks with calculation modulo_files/livestamp.min.js" crossorigin="anonymous"></script><script src="./Powerful tricks with calculation modulo_files/voting.js" crossorigin="anonymous"></script></head>
+
+    <body><div id="MathJax_Message" style="display: none;"></div>
+
+        <!-- Placeholder for any error message on the site -->
+        
+        <div id="alert-message-holder">
+            
+
+            <!-- put a dummy message box so that it can be used when cloning
+                 and adding more -->
+            
+        <div class="alert-message hidden">
+                <div class="message float-left"></div>
+                <div class="cross-holder float-left"><span class="small-cross sprites"></span></div>
+                <div class="clear"></div>
+            </div></div> <!-- end alert-message-holder -->
+        
+
+        
+    <div id="top-prompt-container" class="hidden prompt-container"></div>
+    
+    
+        
+        <header class="header">
+            <i class="fa fa-bars mobile-menu-btn"></i>
+            <nav class="navigation">
+                
+                <a href="https://www.hackerearth.com/" class="logo logo-h-terminal no-underline float-left track-header-logo"></a>
+                
+
+                
+                <ul class="nav-bar no-padding float-left tablet-hide">
+                    <!-- <li id="hackathons" class="nav-bar-menu "><a class="track-header-learn">HOME</a></li> -->
+                    <li id="challenges" class="nav-bar-menu "><a class="track-header-challenges" href="https://www.hackerearth.com/challenges/">CHALLENGES</a></li>
+                    <li id="problems" class="nav-bar-menu "><a class="track-header-problems" href="https://www.hackerearth.com/practice/">PRACTICE</a></li>
+                    <li id="learn" class="nav-bar-menu expand-sub-header selected"><a class="track-header-learn">LEARN</a></li>
+                    <li id="jobs" class="nav-bar-menu expand-sub-header "><a class="track-header-jobs">JOBS</a></li>
+                    
+                    
+                </ul>
+                <ul class="nav-bar right-nav-bar no-padding float-right tablet-hide">
+                    
+                    
+                    <li id="searchbar">
+                        <div id="search-icon-container" class="float-left">
+                            <i class="fa fa-search"></i>
+                        </div>
+                            <input id="searchbar-input" class="float-left" type="text" value="" name="q" autocomplete="off" spellcheck="false" placeholder="Search developers, problems, etc" ajax1="/search/AJAX/search/" ajax2="/search/search-results/">
+                        <div id="search-dropdown" style="display: none;"></div>
+                    </li>
+                    
+                    
+
+                    
+
+                    
+
+
+                    
+
+                    
+
+                    
+                        <li class="nav-bar-menu login-menu-btn"><a target="login-modal" class="track-header-login show-modal">LOGIN</a></li>
+                        <li class="nav-bar-menu signup-menu-btn"><a target="login-modal" class="track-header-signup show-modal show-signup-in-modal">SIGN UP</a></li>
+                    
+
+                    <div class="clear"></div>
+                </ul> <!-- nav-bar -->
+                <div class="clear"></div>
+                
+            </nav> <!-- navigation -->
+            <i class="fa fa-filter challenge-filter-btn hidden"></i>
+            <div class="sub-header learn-header hidden" style="display: none; left: 390px;">
+                <ul class="sub-nav-bar">
+                    <li id="codemonk" class="sub-nav-bar-menu "><a class="track-header-codemonk" href="https://www.hackerearth.com/codemonk/">Code Monk</a></li>
+                    <li id="notes" class="sub-nav-bar-menu selected"><a class="track-header-notes" href="https://www.hackerearth.com/notes/">Notes</a></li>
+                    <div class="menu-arrow" style="left: 24px;"></div>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div class="sub-header jobs-header hidden" style="display: none;">
+                <ul class="sub-nav-bar">
+                    <li id="jobs-sub" class="sub-nav-bar-menu "><a class="track-header-job-listing" href="https://www.hackerearth.com/jobs/hiring/">Job Listings</a></li>
+                    <li id="companies" class="sub-nav-bar-menu "><a class="track-header-companies" href="https://www.hackerearth.com/companies/">Companies</a></li>
+                    <div class="menu-arrow"></div>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </header> <!-- header -->
+        
+    
+    
+
+    
+    
+    <div class="top-banner">
+        <p class="banner-text">
+        
+         Signup and contribute to Notes. <a class="button btn-orange inline-block btn-large show-modal show-signup-in-modal" target="login-modal">Get Started Now</a>
+        
+        </p>
+    </div>
+    
+    
+
+    
+
+    <div id="comment-share-modal" class="modal-window small-modal">
+        <div class="modal-header">
+            Comment permalink
+        </div>
+        <div class="modal-content">
+            <div class="comment-share-wrapper align-center">
+                <textarea class="comment-share-text" type="textbox" rows="4" readonly="readonly" onclick="this.select();"></textarea>
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+    
+    <!-- live events widget -->
+    <div id="live-events-trigger-data"><div id="live-events-container" class="live-events">
+    <div class="green-color" id="live-events-placeholder">
+        <span>Live Events</span>
+        <span id="live-feed-count">7</span>
+    </div>
+    <!-- This div is used for spacing between top and bottom borders while scrolling.-->
+    <div id="live-events-loading">
+
+<div class="event-slider-card live-feed-container" style="display: none;">
+    <div class="event-slider-image align-center float-left live-feed-icon
+    
+      
+        live-non-hiring
+      
+    ">
+    <a target="_blank" href="https://www.hackerearth.com/hpemastermaze/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">
+        
+          
+            <i class="fa fa-trophy fa-3x"></i>
+          
+        
+      </a>
+    </div>
+    <div class="event-slider-info medium-margin-left float-left live-feed-text">
+        <div class="info-challenge-header regular weight-600">
+            <a target="_blank" href="https://www.hackerearth.com/hpemastermaze/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">MasterMaze</a>
+        </div>
+        <div class="info-challenge-header small light live-feed-type">
+            
+              
+                Coding Challenge
+              
+            
+        </div>
+        <div class="clear"></div>
+        <div class="info-challenge-header small light">
+            Ends in <b> 11 hours </b>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="event-slider-card live-feed-container" style="display: none;">
+    <div class="event-slider-image align-center float-left live-feed-icon
+    
+      
+        live-non-hiring
+      
+    ">
+    <a target="_blank" href="https://www.hackerearth.com/battle-of-bots-5/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">
+        
+          
+            <i class="fa fa-trophy fa-3x"></i>
+          
+        
+      </a>
+    </div>
+    <div class="event-slider-info medium-margin-left float-left live-feed-text">
+        <div class="info-challenge-header regular weight-600">
+            <a target="_blank" href="https://www.hackerearth.com/battle-of-bots-5/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">Battle Of Bots #5</a>
+        </div>
+        <div class="info-challenge-header small light live-feed-type">
+            
+              
+                HackerEarth Coding Challenge
+              
+            
+        </div>
+        <div class="clear"></div>
+        <div class="info-challenge-header small light">
+            Ends in <b> 3 days </b>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="event-slider-card live-feed-container" style="display: none;">
+    <div class="event-slider-image align-center float-left live-feed-icon
+    
+      
+        live-non-hiring
+      
+    ">
+    <a target="_blank" href="https://www.hackerearth.com/july-circuits/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">
+        
+          
+            <i class="fa fa-trophy fa-3x"></i>
+          
+        
+      </a>
+    </div>
+    <div class="event-slider-info medium-margin-left float-left live-feed-text">
+        <div class="info-challenge-header regular weight-600">
+            <a target="_blank" href="https://www.hackerearth.com/july-circuits/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">July Circuits  </a>
+        </div>
+        <div class="info-challenge-header small light live-feed-type">
+            
+              
+                HackerEarth Coding Challenge
+              
+            
+        </div>
+        <div class="clear"></div>
+        <div class="info-challenge-header small light">
+            Ends in <b> 7 days </b>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="event-slider-card live-feed-container" style="display: none;">
+    <div class="event-slider-image align-center float-left live-feed-icon
+    
+      
+        live-sprint
+      
+    ">
+    <a target="_blank" href="https://www.hackerearth.com/sprints/styh/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">
+        
+          
+            <i class="fa fa-connectdevelop fa-3x"></i>
+          
+        
+      </a>
+    </div>
+    <div class="event-slider-info medium-margin-left float-left live-feed-text">
+        <div class="info-challenge-header regular weight-600">
+            <a target="_blank" href="https://www.hackerearth.com/sprints/styh/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">Smarter Than Y...rday Hackathon</a>
+        </div>
+        <div class="info-challenge-header small light live-feed-type">
+            
+              
+                Hackathon
+              
+            
+        </div>
+        <div class="clear"></div>
+        <div class="info-challenge-header small light">
+            Ends in <b> 7 days </b>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="event-slider-card live-feed-container" style="display: none;">
+    <div class="event-slider-image align-center float-left live-feed-icon
+    
+      
+        live-non-hiring
+      
+    ">
+    <a target="_blank" href="https://sociohacks.hackerearth.com/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">
+        
+          
+            <i class="fa fa-trophy fa-3x"></i>
+          
+        
+      </a>
+    </div>
+    <div class="event-slider-info medium-margin-left float-left live-feed-text">
+        <div class="info-challenge-header regular weight-600">
+            <a target="_blank" href="https://sociohacks.hackerearth.com/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">SocioHacks</a>
+        </div>
+        <div class="info-challenge-header small light live-feed-type">
+            
+              
+                HackerEarth Coding Challenge
+              
+            
+        </div>
+        <div class="clear"></div>
+        <div class="info-challenge-header small light">
+            Ends in <b> 14 days </b>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="event-slider-card live-feed-container" style="display: none;">
+    <div class="event-slider-image align-center float-left live-feed-icon
+    
+      
+        live-sprint
+      
+    ">
+    <a target="_blank" href="https://www.hackerearth.com/sprints/magicbricks-build-a-thon/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">
+        
+          
+            <i class="fa fa-connectdevelop fa-3x"></i>
+          
+        
+      </a>
+    </div>
+    <div class="event-slider-info medium-margin-left float-left live-feed-text">
+        <div class="info-challenge-header regular weight-600">
+            <a target="_blank" href="https://www.hackerearth.com/sprints/magicbricks-build-a-thon/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">Magicbricks Build-a-thon</a>
+        </div>
+        <div class="info-challenge-header small light live-feed-type">
+            
+              
+                Hackathon
+              
+            
+        </div>
+        <div class="clear"></div>
+        <div class="info-challenge-header small light">
+            Ends in <b> 14 days </b>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="event-slider-card live-feed-container" style="display: none;">
+    <div class="event-slider-image align-center float-left live-feed-icon
+    
+      
+        live-sprint
+      
+    ">
+    <a target="_blank" href="https://www.hackerearth.com/sprints/digital-india-hackathon/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">
+        
+          
+            <i class="fa fa-connectdevelop fa-3x"></i>
+          
+        
+      </a>
+    </div>
+    <div class="event-slider-info medium-margin-left float-left live-feed-text">
+        <div class="info-challenge-header regular weight-600">
+            <a target="_blank" href="https://www.hackerearth.com/sprints/digital-india-hackathon/?utm_source=website&amp;utm_medium=widget&amp;utm_campaign=live-widget">Digital India Hackathon</a>
+        </div>
+        <div class="info-challenge-header small light live-feed-type">
+            
+              
+                Hackathon
+              
+            
+        </div>
+        <div class="clear"></div>
+        <div class="info-challenge-header small light">
+            Ends in <b> 34 days </b>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+</div>
+</div>
+<div id="live-events-load-trigger" class="load-pagelet hidden" target="live-events-loading" ajax="/AJAX/live_feed/" show-loader="true"></div>
+
+</div>
+    
+
+    <!-- This is the center page which has a fixed width of 1100px -->
+    
+<div class="responsive-page denim-gray-texture">
+    <div class="responsive-container">
+        <div class="page-data">
+            <div class="left medium-margin">
+                <div class="notes-header content weight-600 large" id="notes-left-container">
+                    <a href="https://www.hackerearth.com/notes/"><i class="fa fa-long-arrow-left"></i> Notes</a>
+                    
+            </div> <!--heading-2 -->
+            <div class="clear"></div>
+
+            
+
+
+
+
+<div class="note-container">
+    <div class="note-title-container content">
+        
+        
+        <div class="notes-vote regular align-center light">
+            <span class="polls">
+                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="anon-polls-up light show-modal inline-block show-signup-in-modal" target="login-modal"><i class="fa fa-caret-up fa-lg fa-3x"></i></a>
+                <br>
+                <span class="polls-count only-positive inline-block dark">27 </span>
+            </span>
+        </div> <!-- end of notes-vote -->
+        
+        
+
+        
+
+        <div class="notes-item standard-margin-left">
+            <div class="notes-title">
+             Powerful tricks with calculation modulo
+            </div>
+            <div class="notes-description">
+                    
+                    <div class="less-margin tags-list">
+                    
+                        
+                        
+                        <div class="note-tags dark smaller float-left medium-margin-right"> Modulus</div>
+                        
+                        
+                        
+                        <div class="note-tags dark smaller float-left medium-margin-right"> Modulo</div>
+                        
+                        
+                    
+                        </div> <!-- tags-list -->
+                    
+                    
+                    <div class="clear"></div>
+
+            </div> <!-- notes-description -->
+        </div><!-- notes-tem -->
+    </div> <!-- note-title-container -->
+
+    <hr class="hr-dashed">
+
+    <div class="regular darker note-body content">
+        <p></p><p>Here I've prepared some really cool tricks which can help you to find the answer modulo some number. And I'm sure that this note is helpful not only for beginners ;)</p>
+<p></p><h3>Trick #1: (A / B) % MOD = (A % (MOD * B)) / B</h3>
+<i>Conditions:</i> none.<br>
+<i>Advices:</i> use this trick only if <b>B</b> can be not coprime with <b>MOD</b>, because new modulus <b>= MOD * B</b> can be large. How to avoid overflow working with large modulus read at the trick #5.<p></p>
+<p></p><h3>Trick #2: (A / B) % MOD = ((A % MOD) * (B<sup>phi(MOD) - 1</sup> % MOD)) % MOD<br><b>where</b> phi <b>is <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">Euler's totient function</a></b></h3>
+<i>Conditions:</i> <b>B</b> and <b>MOD</b> are coprimes.<br>
+<i>Proof:</i> <b>(A / B) % MOD = ((A % MOD) * (B<sup>-1</sup> % MOD)) % MOD</b> from <a href="https://en.wikipedia.org/wiki/Exponentiation">Exponentiation properties</a>. And from <a href="https://en.wikipedia.org/wiki/Euler%27s_theorem">Euler's theorem</a> follows that <b>B<sup>phi(MOD)</sup> % MOD = 1</b>. Let's multiply this equation by <b>B<sup>-1</sup></b> and we will get that <b>B<sup>-1</sup> % MOD = B<sup>phi(MOD) - 1</sup> % MOD</b>.<p></p>
+<p></p><h3>Trick #3: (A / B) % MOD = ((A % MOD) * (B<sup>MOD - 2</sup> % MOD)) % MOD</h3>
+<i>Conditions:</i> <b>B</b> and <b>MOD</b> are coprimes, <b>MOD</b> is a prime number.<br>
+<i>Advices:</i> if you're sure that <b>MOD</b> is prime, better use this trick instead of trick #2. Remember that <b>10<sup>9</sup>+7</b> and <b>10<sup>9</sup>+9</b> are prime numbers.<br>
+<i>Proof:</i> if <b>MOD</b> is prime then <b>phi(MOD) = MOD - 1</b> from properties of <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">Euler's totient function</a>. As it's just a particular case of trick #2, the rest of proof is similar.<p></p>
+<p></p><h3>Trick #4: A<sup>N</sup> % MOD = A<sup>N % phi(MOD)</sup> % MOD</h3>
+<i>Conditions:</i> <b>A</b> and <b>MOD</b> are coprimes.<br>
+<i>Advices:</i> use this trick only if <b>N</b> can't be present in any standart data type, otherwise use <a href="https://en.wikipedia.org/wiki/Exponentiation_by_squaring">Fast exponentiation</a>.<br>
+<i>Proof:</i> from <a href="https://en.wikipedia.org/wiki/Euler%27s_theorem">Euler's theorem</a> follows that <b>A<sup>phi(MOD)</sup> % MOD = 1</b>. It's easy to see that <b>A<sup>X * phi(MOD)</sup> % MOD = 1</b> too. So if <b>N = X * phi(MOD) + Y</b> then <b>A<sup>N</sup> % MOD = A<sup>Y</sup> % MOD</b> and minimal such <b>Y = N % phi(MOD)</b>.<p></p>
+<p></p><h3>Trick #5: (A * B) % MOD<br>
+<b>where</b> MOD <b>can't be present in </b>int<b> data type</b></h3><p></p>
+<pre class="prettyprint prettyprinted"><code><span class="kwd">function</span><span class="pln"> mulmod</span><span class="pun">(</span><span class="pln">A</span><span class="pun">,</span><span class="pln"> B</span><span class="pun">,</span><span class="pln"> MOD</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    RES </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="pln">B </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">B </span><span class="kwd">is</span><span class="pln"> odd</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            RES </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">RES </span><span class="pun">+</span><span class="pln"> A</span><span class="pun">)</span><span class="pln"> </span><span class="pun">%</span><span class="pln"> MOD</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+        A </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">A </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span><span class="pun">)</span><span class="pln"> </span><span class="pun">%</span><span class="pln"> MOD</span><span class="pun">;</span><span class="pln">
+        B </span><span class="pun">=</span><span class="pln"> B </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> RES</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><i>Conditions:</i> <b>2 * MOD</b> can be present in a standart data type.<br>
+<i>Advices: </i>use this trick only if <b>(A % MOD) * (B % MOD)</b> can't be present in any standart data type because of overflow and you don't want to use BigIntegers. But keep in mind that it works in <b>O(logB)</b> operations, not in <b>O(1)</b> as <b>(A % MOD) * (B % MOD)</b>.<br>
+<i>Proof:</i> if <b>B</b> is even then <b>A * B = 2 * A * (B / 2)</b>, otherwise <b>A * B = A + A * (B - 1)</b>.</p><p></p>
+    </div> <!-- end note-body -->
+
+    
+    <div class="social-share medium-margin content">
+        <!-- fb, twitter, g+ buttons -->
+        <!-- the urls are messed up because they were changed post launch -->
+        <div class="fb-like float-left medium-margin-right fb_iframe_widget" data-href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="lucida grande" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=0&amp;font=lucida%20grande&amp;href=https%3A%2F%2Fwww.hackerearth.com%2Fnotes%2Fpowerful-tricks-with-calculation-modulo%2F&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=100"><span style="vertical-align: bottom; width: 67px; height: 20px;"><iframe name="f236c11298" width="100px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Powerful tricks with calculation modulo_files/like.html" style="border: none; visibility: visible; width: 67px; height: 20px;" class=""></iframe></span></div>
+        <div class="float-left medium-margin-right"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="Twitter Tweet Button" src="./Powerful tricks with calculation modulo_files/tweet_button.b41e99df00581dc95d7fdd63f3283511.en.html" style="position: static; visibility: visible; width: 61px; height: 20px;" data-url="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/"></iframe></div>
+        <div class="float-left"><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1468736142629" name="I0_1468736142629" src="./Powerful tricks with calculation modulo_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div></div>
+        <!-- end of social buttons -->
+        <div class="clear"></div>
+    </div> <!-- social-share -->
+    
+
+    
+    <div id="comments-320-448" class="pagelet-inview comments standard-margin" ajax="/comment-action/load-comments/448/320/with-voting/with-sort/" target="comments-320-448" loaded="2">
+
+
+<div id="comment-realtime-error" class="yellow-banner weight-600 dark less-margin-2-bottom regular hidden"></div>
+<div class="comments-list" realtime="true">
+    
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="./Powerful tricks with calculation modulo_files/nice_threadedcomments.css">
+
+
+<div class="threadedComments">
+    <div class="content comment-count">
+        
+        <div id="comment-count-320-448" class="regular dark bold caps float-left"> Comments (7) </div>
+        
+
+        
+        <div>
+            
+            
+            
+            
+                <a ajax="/comment-action/load-comments/448/320/with-voting/with-sort/" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="load-pagelet link-13 medium-margin-left float-left " target="comments-320-448"><i class="fa fa-refresh less-margin"></i></a>
+            
+            <a id="sort-comments-by-date" ajax="/comment-action/load-comments/448/320/with-voting/none/" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="load-pagelet link-13 hidden" target="comments-320-448"></a>
+            <a id="sort-comments-by-votes" ajax="/comment-action/load-comments/448/320/with-voting/with-sort/" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="load-pagelet link-13 hidden" target="comments-320-448"></a>
+            
+            <span class="sort-filter float-right">
+                <span class="light caps bold">Sort By:</span>
+                <label for="sort-filter">
+                    <select id="sort-filter" class="dark small">
+                        <option value="Submitted">Date</option>
+                        <option selected="selected" value="Upvotes">Relevance</option>
+                    </select>
+                </label>
+            </span>
+            
+            
+            
+            
+        <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        
+
+    </div> <!-- content -->
+    
+    <div class="less-margin-2">
+        <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="link-13 dark show-modal content show-signup-in-modal" target="login-modal">Login/Signup to Comment</a>
+    </div>
+    
+
+    
+    <div id="c-320-448" class="content">
+        
+        <!-- fetch comment_content_object to reduce query count -->
+        
+            
+            
+
+            
+
+            
+            <ul>
+            
+
+            
+            <li class="active-comment " id="c20209">
+                <div id="comment-container-20209" class="comment-container">
+                    
+                    <div class="float-left comment-user-image">
+                        
+                            <img src="./Powerful tricks with calculation modulo_files/gravatar.png" alt="lalitk" width="30" height="30" onerror="if(typeof handle_avatar_error==&#39;function&#39;){handle_avatar_error(this);}">
+                        
+                    </div> <!-- comment-user-image -->
+                    
+
+                    <div class="float-left less-margin-left comment-info-container child-exists " style="width:93%">
+                        
+                        <div class="comment-user-info float-left">
+                            
+                            
+                            <div class="dark">Lalit Khattar</div>
+                            
+                            
+                        </div> <!-- comment-user-info -->
+                        
+
+                        
+
+
+
+                        
+
+                        
+                        <div class="smaller light float-left less-margin-left" style="margin-top: 3px;">a year ago</div>
+                        
+
+                        <div class="clear"></div>
+
+                        
+                        <div class="comment-statement">
+                            
+                            <p>Hey Boris, your note looks good. But can you reduce the font size of bold text? It would look more decent then.</p>
+
+<p>Once you have done the changes please reply to this comment so that I can approve your note :)</p>
+                            
+                        </div>
+                        <div id="comment-statement-form-20209" class="comment-statement-form"></div>
+                        <div id="users-suggestion-20209"></div>
+                        
+
+                        
+                        <div class="comment-actions smaller">
+                        
+                        <div class="float-left poll-link">
+                            
+                                <span class="polls-comment align-center inline-block float-right">
+                                
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="anon-polls-up upvote show-modal inline-block show-signup-in-modal" target="login-modal">
+                                    <i class="fa fa-caret-up fa-lg fa-2x"></i>
+                                    <span class="polls-count only-positive light inline-block less-margin-left">0 votes</span>
+                                </a>
+                                
+                                </span>
+                            
+                        </div>
+                        
+                        
+                            <!-- Reply to comment -->
+                            <div class="float-left reply-link smaller less-margin-left">
+                               <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="show-modal light hover-link" target="login-modal">Reply</a>
+                            </div>
+                            <!-- Private message -->
+                            
+                            <div class="float-left smaller share-comment less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/?scroll-id=comments-320-448&amp;scroll-trigger=inview#c20209" target="_blank" title="Copy comment link">Permalink</a>
+                            </div>
+                            <div class="clear"></div>
+                        
+                        </div>
+                        
+                    </div> <!-- comment-info-container -->
+                    <div class="clear"></div>
+                </div>
+            
+            
+        
+            
+
+            
+
+            
+            <ul>
+            
+
+            
+            <li class="active-comment last" id="c20224">
+                <div id="comment-container-20224" class="comment-container">
+                    
+                    <div class="float-left comment-user-image">
+                        
+                        <a href="https://www.hackerearth.com/@sokolov" target="_blank">
+                            <img src="./Powerful tricks with calculation modulo_files/4283d43color.jpg" alt="sokolov" width="30" height="30" onerror="if(typeof handle_avatar_error==&#39;function&#39;){handle_avatar_error(this);}">
+                        </a>
+                        
+                    </div> <!-- comment-user-image -->
+                    
+
+                    <div class="float-left less-margin-left comment-info-container" style="width:93%">
+                        
+                        <div class="comment-user-info float-left">
+                            
+                            
+                                <a class="" href="https://www.hackerearth.com/@sokolov">
+                                    Boris Sokolov
+                                </a>
+                            
+                            
+                        </div> <!-- comment-user-info -->
+                        
+
+                        
+
+<div class="comment-user-admin smaller light float-left less-margin-left tool-tip">
+    <i class="fa fa-bolt"></i> Author
+</div>
+
+
+
+                        
+
+                        
+                        <div class="smaller light float-left less-margin-left" style="margin-top: 3px;">a year ago</div>
+                        
+
+                        <div class="clear"></div>
+
+                        
+                        <div class="comment-statement">
+                            
+                            <p>Done :) Thank you!</p>
+                            
+                        </div>
+                        <div id="comment-statement-form-20224" class="comment-statement-form"></div>
+                        <div id="users-suggestion-20224"></div>
+                        
+
+                        
+                        <div class="comment-actions smaller">
+                        
+                        <div class="float-left poll-link">
+                            
+                                <span class="polls-comment align-center inline-block float-right">
+                                
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="anon-polls-up upvote show-modal inline-block show-signup-in-modal" target="login-modal">
+                                    <i class="fa fa-caret-up fa-lg fa-2x"></i>
+                                    <span class="polls-count only-positive light inline-block less-margin-left">0 votes</span>
+                                </a>
+                                
+                                </span>
+                            
+                        </div>
+                        
+                        
+                            <!-- Reply to comment -->
+                            <div class="float-left reply-link smaller less-margin-left">
+                               <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="show-modal light hover-link" target="login-modal">Reply</a>
+                            </div>
+                            <!-- Private message -->
+                            
+                            <div class="float-left private-message-link less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/messages/compose/sokolov/" target="_blank">Message</a>
+                            </div>
+                            
+                            <div class="float-left smaller share-comment less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/?scroll-id=comments-320-448&amp;scroll-trigger=inview#c20224" target="_blank" title="Copy comment link">Permalink</a>
+                            </div>
+                            <div class="clear"></div>
+                        
+                        </div>
+                        
+                    </div> <!-- comment-info-container -->
+                    <div class="clear"></div>
+                </div>
+            
+            
+                </li>
+                </ul>
+            
+                </li>
+                </ul>
+            
+        
+            
+
+            
+
+            
+            <ul>
+            
+
+            
+            
+                
+                </ul>
+            
+        
+            
+            
+            
+
+            
+
+            
+            <ul>
+            
+
+            
+            <li class="active-comment " id="c26780">
+                <div id="comment-container-26780" class="comment-container">
+                    
+                    <div class="float-left comment-user-image">
+                        
+                            <img src="./Powerful tricks with calculation modulo_files/gravatar.png" alt="arjit5" width="30" height="30" onerror="if(typeof handle_avatar_error==&#39;function&#39;){handle_avatar_error(this);}">
+                        
+                    </div> <!-- comment-user-image -->
+                    
+
+                    <div class="float-left less-margin-left comment-info-container" style="width:93%">
+                        
+                        <div class="comment-user-info float-left">
+                            
+                            
+                            <div class="dark">Arjit Srivastava</div>
+                            
+                            
+                        </div> <!-- comment-user-info -->
+                        
+
+                        
+
+
+
+                        
+
+                        
+                        <div class="smaller light float-left less-margin-left" style="margin-top: 3px;">a year ago</div>
+                        
+
+                        <div class="clear"></div>
+
+                        
+                        <div class="comment-statement">
+                            
+                            <p></p>
+
+<p>This was a very informative note. Thank you for writing this one, Boris! :)</p>
+                            
+                        </div>
+                        <div id="comment-statement-form-26780" class="comment-statement-form"></div>
+                        <div id="users-suggestion-26780"></div>
+                        
+
+                        
+                        <div class="comment-actions smaller">
+                        
+                        <div class="float-left poll-link">
+                            
+                                <span class="polls-comment align-center inline-block float-right">
+                                
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="anon-polls-up upvote show-modal inline-block show-signup-in-modal" target="login-modal">
+                                    <i class="fa fa-caret-up fa-lg fa-2x"></i>
+                                    <span class="polls-count only-positive light inline-block less-margin-left">0 votes</span>
+                                </a>
+                                
+                                </span>
+                            
+                        </div>
+                        
+                        
+                            <!-- Reply to comment -->
+                            <div class="float-left reply-link smaller less-margin-left">
+                               <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="show-modal light hover-link" target="login-modal">Reply</a>
+                            </div>
+                            <!-- Private message -->
+                            
+                            <div class="float-left smaller share-comment less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/?scroll-id=comments-320-448&amp;scroll-trigger=inview#c26780" target="_blank" title="Copy comment link">Permalink</a>
+                            </div>
+                            <div class="clear"></div>
+                        
+                        </div>
+                        
+                    </div> <!-- comment-info-container -->
+                    <div class="clear"></div>
+                </div>
+            
+            
+                </li>
+                </ul>
+            
+        
+            
+            
+            
+
+            
+
+            
+            <ul>
+            
+
+            
+            <li class="active-comment " id="c35626">
+                <div id="comment-container-35626" class="comment-container">
+                    
+                    <div class="float-left comment-user-image">
+                        
+                        <a href="https://www.hackerearth.com/@amangoeliitb" target="_blank">
+                            <img src="./Powerful tricks with calculation modulo_files/photo_overlay.jpg" alt="amangoeliitb" width="30" height="30" onerror="if(typeof handle_avatar_error==&#39;function&#39;){handle_avatar_error(this);}">
+                        </a>
+                        
+                    </div> <!-- comment-user-image -->
+                    
+
+                    <div class="float-left less-margin-left comment-info-container" style="width:93%">
+                        
+                        <div class="comment-user-info float-left">
+                            
+                            
+                                <a class="" href="https://www.hackerearth.com/@amangoeliitb">
+                                    Aman Goel
+                                </a>
+                            
+                            
+                        </div> <!-- comment-user-info -->
+                        
+
+                        
+
+
+
+                        
+
+                        
+                        <div class="smaller light float-left less-margin-left" style="margin-top: 3px;">10 months ago</div>
+                        
+
+                        <div class="clear"></div>
+
+                        
+                        <div class="comment-statement">
+                            
+                            <p>Nice one!</p>
+                            
+                        </div>
+                        <div id="comment-statement-form-35626" class="comment-statement-form"></div>
+                        <div id="users-suggestion-35626"></div>
+                        
+
+                        
+                        <div class="comment-actions smaller">
+                        
+                        <div class="float-left poll-link">
+                            
+                                <span class="polls-comment align-center inline-block float-right">
+                                
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="anon-polls-up upvote show-modal inline-block show-signup-in-modal" target="login-modal">
+                                    <i class="fa fa-caret-up fa-lg fa-2x"></i>
+                                    <span class="polls-count only-positive light inline-block less-margin-left">0 votes</span>
+                                </a>
+                                
+                                </span>
+                            
+                        </div>
+                        
+                        
+                            <!-- Reply to comment -->
+                            <div class="float-left reply-link smaller less-margin-left">
+                               <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="show-modal light hover-link" target="login-modal">Reply</a>
+                            </div>
+                            <!-- Private message -->
+                            
+                            <div class="float-left private-message-link less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/messages/compose/amangoeliitb/" target="_blank">Message</a>
+                            </div>
+                            
+                            <div class="float-left smaller share-comment less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/?scroll-id=comments-320-448&amp;scroll-trigger=inview#c35626" target="_blank" title="Copy comment link">Permalink</a>
+                            </div>
+                            <div class="clear"></div>
+                        
+                        </div>
+                        
+                    </div> <!-- comment-info-container -->
+                    <div class="clear"></div>
+                </div>
+            
+            
+                </li>
+                </ul>
+            
+        
+            
+            
+            
+
+            
+
+            
+            <ul>
+            
+
+            
+            <li class="active-comment " id="c45740">
+                <div id="comment-container-45740" class="comment-container">
+                    
+                    <div class="float-left comment-user-image">
+                        
+                        <a href="https://www.hackerearth.com/@bornforhack" target="_blank">
+                            <img src="./Powerful tricks with calculation modulo_files/gravatar.png" alt="bornforhack" width="30" height="30" onerror="if(typeof handle_avatar_error==&#39;function&#39;){handle_avatar_error(this);}">
+                        </a>
+                        
+                    </div> <!-- comment-user-image -->
+                    
+
+                    <div class="float-left less-margin-left comment-info-container" style="width:93%">
+                        
+                        <div class="comment-user-info float-left">
+                            
+                            
+                                <a class="" href="https://www.hackerearth.com/@bornforhack">
+                                    Sunil S
+                                </a>
+                            
+                            
+                        </div> <!-- comment-user-info -->
+                        
+
+                        
+
+
+
+                        
+
+                        
+                        <div class="smaller light float-left less-margin-left" style="margin-top: 3px;">6 months ago</div>
+                        
+
+                        <div class="clear"></div>
+
+                        
+                        <div class="comment-statement">
+                            
+                            <p>this is awesome tricks.</p>
+                            
+                        </div>
+                        <div id="comment-statement-form-45740" class="comment-statement-form"></div>
+                        <div id="users-suggestion-45740"></div>
+                        
+
+                        
+                        <div class="comment-actions smaller">
+                        
+                        <div class="float-left poll-link">
+                            
+                                <span class="polls-comment align-center inline-block float-right">
+                                
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="anon-polls-up upvote show-modal inline-block show-signup-in-modal" target="login-modal">
+                                    <i class="fa fa-caret-up fa-lg fa-2x"></i>
+                                    <span class="polls-count only-positive light inline-block less-margin-left">0 votes</span>
+                                </a>
+                                
+                                </span>
+                            
+                        </div>
+                        
+                        
+                            <!-- Reply to comment -->
+                            <div class="float-left reply-link smaller less-margin-left">
+                               <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="show-modal light hover-link" target="login-modal">Reply</a>
+                            </div>
+                            <!-- Private message -->
+                            
+                            <div class="float-left private-message-link less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/messages/compose/bornforhack/" target="_blank">Message</a>
+                            </div>
+                            
+                            <div class="float-left smaller share-comment less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/?scroll-id=comments-320-448&amp;scroll-trigger=inview#c45740" target="_blank" title="Copy comment link">Permalink</a>
+                            </div>
+                            <div class="clear"></div>
+                        
+                        </div>
+                        
+                    </div> <!-- comment-info-container -->
+                    <div class="clear"></div>
+                </div>
+            
+            
+                </li>
+                </ul>
+            
+        
+            
+            
+            
+
+            
+
+            
+            <ul>
+            
+
+            
+            <li class="active-comment " id="c50387">
+                <div id="comment-container-50387" class="comment-container">
+                    
+                    <div class="float-left comment-user-image">
+                        
+                        <a href="https://www.hackerearth.com/@SKrPl" target="_blank">
+                            <img src="./Powerful tricks with calculation modulo_files/1ab8582aaeaaqaaaaaaaalfaaaajdvmodk1mdvhlthjnmutndc4zc05zjmwlty3ymvjywfmndq3zg.jpg" alt="SKrPl" width="30" height="30" onerror="if(typeof handle_avatar_error==&#39;function&#39;){handle_avatar_error(this);}">
+                        </a>
+                        
+                    </div> <!-- comment-user-image -->
+                    
+
+                    <div class="float-left less-margin-left comment-info-container" style="width:93%">
+                        
+                        <div class="comment-user-info float-left">
+                            
+                            
+                                <a class="" href="https://www.hackerearth.com/@SKrPl">
+                                    Siddhant Kumar Patel
+                                </a>
+                            
+                            
+                        </div> <!-- comment-user-info -->
+                        
+
+                        
+
+
+
+                        
+
+                        
+                        <div class="smaller light float-left less-margin-left" style="margin-top: 3px;">4 months ago</div>
+                        
+
+                        <div class="clear"></div>
+
+                        
+                        <div class="comment-statement">
+                            
+                            <p>waiting for some more notes like this :)</p>
+                            
+                        </div>
+                        <div id="comment-statement-form-50387" class="comment-statement-form"></div>
+                        <div id="users-suggestion-50387"></div>
+                        
+
+                        
+                        <div class="comment-actions smaller">
+                        
+                        <div class="float-left poll-link">
+                            
+                                <span class="polls-comment align-center inline-block float-right">
+                                
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="anon-polls-up upvote show-modal inline-block show-signup-in-modal" target="login-modal">
+                                    <i class="fa fa-caret-up fa-lg fa-2x"></i>
+                                    <span class="polls-count only-positive light inline-block less-margin-left">0 votes</span>
+                                </a>
+                                
+                                </span>
+                            
+                        </div>
+                        
+                        
+                            <!-- Reply to comment -->
+                            <div class="float-left reply-link smaller less-margin-left">
+                               <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="show-modal light hover-link" target="login-modal">Reply</a>
+                            </div>
+                            <!-- Private message -->
+                            
+                            <div class="float-left private-message-link less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/messages/compose/SKrPl/" target="_blank">Message</a>
+                            </div>
+                            
+                            <div class="float-left smaller share-comment less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/?scroll-id=comments-320-448&amp;scroll-trigger=inview#c50387" target="_blank" title="Copy comment link">Permalink</a>
+                            </div>
+                            <div class="clear"></div>
+                        
+                        </div>
+                        
+                    </div> <!-- comment-info-container -->
+                    <div class="clear"></div>
+                </div>
+            
+            
+                </li>
+                </ul>
+            
+        
+            
+            
+            
+
+            
+
+            
+            <ul>
+            
+
+            
+            <li class="active-comment " id="c58972">
+                <div id="comment-container-58972" class="comment-container">
+                    
+                    <div class="float-left comment-user-image">
+                        
+                        <a href="https://www.hackerearth.com/@troublehunter" target="_blank">
+                            <img src="./Powerful tricks with calculation modulo_files/0a6d1f61521455_350572571751000_1637311005_n.jpg" alt="troublehunter" width="30" height="30" onerror="if(typeof handle_avatar_error==&#39;function&#39;){handle_avatar_error(this);}">
+                        </a>
+                        
+                    </div> <!-- comment-user-image -->
+                    
+
+                    <div class="float-left less-margin-left comment-info-container" style="width:93%">
+                        
+                        <div class="comment-user-info float-left">
+                            
+                            
+                                <a class="" href="https://www.hackerearth.com/@troublehunter">
+                                    Lavee Singh
+                                </a>
+                            
+                            
+                        </div> <!-- comment-user-info -->
+                        
+
+                        
+
+
+
+                        
+
+                        
+                        <div class="smaller light float-left less-margin-left" style="margin-top: 3px;">a month ago</div>
+                        
+
+                        <div class="clear"></div>
+
+                        
+                        <div class="comment-statement">
+                            
+                            <p>Awesome notes. Thanks!</p>
+                            
+                        </div>
+                        <div id="comment-statement-form-58972" class="comment-statement-form"></div>
+                        <div id="users-suggestion-58972"></div>
+                        
+
+                        
+                        <div class="comment-actions smaller">
+                        
+                        <div class="float-left poll-link">
+                            
+                                <span class="polls-comment align-center inline-block float-right">
+                                
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="anon-polls-up upvote show-modal inline-block show-signup-in-modal" target="login-modal">
+                                    <i class="fa fa-caret-up fa-lg fa-2x"></i>
+                                    <span class="polls-count only-positive light inline-block less-margin-left">0 votes</span>
+                                </a>
+                                
+                                </span>
+                            
+                        </div>
+                        
+                        
+                            <!-- Reply to comment -->
+                            <div class="float-left reply-link smaller less-margin-left">
+                               <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="show-modal light hover-link" target="login-modal">Reply</a>
+                            </div>
+                            <!-- Private message -->
+                            
+                            <div class="float-left private-message-link less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/messages/compose/troublehunter/" target="_blank">Message</a>
+                            </div>
+                            
+                            <div class="float-left smaller share-comment less-margin-left">
+                                <span class="dot"><i class="fa fa-circle"></i></span>
+                                <a class="light" href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/?scroll-id=comments-320-448&amp;scroll-trigger=inview#c58972" target="_blank" title="Copy comment link">Permalink</a>
+                            </div>
+                            <div class="clear"></div>
+                        
+                        </div>
+                        
+                    </div> <!-- comment-info-container -->
+                    <div class="clear"></div>
+                </div>
+            
+            
+                </li>
+                </ul>
+            
+        
+
+        
+        
+    </div> <!-- content -->
+    
+</div> <!-- threadedComments -->
+
+
+
+
+
+    <div id="post-comment-url" class="hidden">
+        
+            /comment-action/AJAX/post/with-voting/
+        
+    </div>
+    
+    
+    
+</div> <!-- comments -->
+
+
+</div>
+    
+</div> <!-- end notes-container -->
+
+        </div><!-- left -->
+
+        <div class="right medium-margin">
+            <div class="right-box">
+                <div class="title"><i class="fa fa-magic less-margin-bottom"></i> Author</div>
+                <hr class="hr-dashed">
+                        
+                <div class="content">
+                    <div class="notes-user-info ">
+                        <a href="https://www.hackerearth.com/@sokolov" class="profile-pic inline-block medium-margin-right v-align-top">
+                            <img src="./Powerful tricks with calculation modulo_files/4283d43color(1).jpg" alt="sokolov" width="80" height="80" onerror="if(typeof handle_avatar_error==&#39;function&#39;){handle_avatar_error(this);}">
+                        </a>
+                        <div class="inline-block user-info light small">
+                            <a href="https://www.hackerearth.com/@sokolov" class="inline-block large dark weight-600 hover-link">Boris Sokolov</a>
+                            
+                            <div class="user-job-info ellipsis" title="C++ Developer at ModuleWorks"><i class="fa fa-briefcase small"></i> C++ Developer at ModuleWorks</div>
+                            
+                            
+                            <div><i class="fa fa-map-marker small"></i> Simferopol, Crimea, Russian Federation</div>
+                            
+                            <div><a href="https://www.hackerearth.com/notes/u/sokolov/" class="light weight-600"><i class="fa fa-file-text-o small"></i> 3 notes</a></div>
+                        </div> <!-- user-info -->
+                    </div> <!-- notes-user-info -->
+                </div> <!-- content -->
+            </div> <!-- right-box -->
+
+            
+
+            <div class="right-box" id="e20d965"><div class="title">Trending Notes</div>
+<hr class="hr-dashed">
+<div class="content">
+    
+    <div class="less-margin-2">
+        <a href="https://www.hackerearth.com/notes/divyanshu12/python-diaries-chapter-2/"> Python Diaries chapter 2</a>
+        <div class="small">written by Divyanshu Bansal</div>
+    </div>
+    
+    <div class="less-margin-2">
+        <a href="https://www.hackerearth.com/notes/divyanshu12/python-diaries-chapter-1/">  Python Diaries chapter 1</a>
+        <div class="small">written by Divyanshu Bansal</div>
+    </div>
+    
+    <div class="less-margin-2">
+        <a href="https://www.hackerearth.com/notes/raj96/sentinel-linear-search/"> Sentinel Linear Search</a>
+        <div class="small">written by RAJ PATEL</div>
+    </div>
+    
+    <div class="less-margin-2">
+        <a href="https://www.hackerearth.com/notes/samarth10/network-analysis-and-centrality-measures-part-i/"> Network Analysis and Centrality Measures (Part-I)</a>
+        <div class="small">written by SAMARTH DEYAGOND</div>
+    </div>
+    
+    <div class="less-margin-2">
+        <a href="https://www.hackerearth.com/notes/kartikmehta.iitd/indiahacks-machine-learning-hackathon-winning-solution/"> IndiaHacks: Machine Learning Hackathon winning solution</a>
+        <div class="small">written by kartik mehta</div>
+    </div>
+    
+    <a href="https://www.hackerearth.com/notes/" class="small float-right">more ... </a>
+    <div class="clear"></div>
+</div> <!-- content -->
+</div>
+
+        </div> <!-- right -->
+        <div class="clear"></div>
+
+    </div> <!-- responsive-container -->
+</div> <!-- responsive-page -->
+
+
+    <!-- include modal window for login/signup -->
+    
+        
+<div id="login-modal" class="modal-window smaller-modal hidden">
+    <div class="modal-header">
+        <div class="login-form align-center larger">Log in</div>
+        <div class="signup-form-div hidden align-center larger">Sign Up</div>
+        <div class="password-reset hidden align-center larger">Reset Password</div>
+    </div>
+    <div class="modal-content">
+
+        <div class="login-form">
+            
+                
+
+<div class="modal-social-login align-center">
+    
+    
+    <a url="/facebook/login/?display=popup&amp;next=%2Fsocial-login-complete%2F%3Forigin_protocol%3Dhttps%26origin_host%3Dwww.hackerearth.com%26redirect%3D/notes/powerful-tricks-with-calculation-modulo/&amp;update=facebook&amp;source=notes" title="Facebook" class="button btn-facebook btn-large float-left show-popup" minimal="true">
+    
+        <i class="fa fa-facebook"></i> <span class="regular weight-600 less-margin-left">Log in with Facebook</span>
+    </a>
+    
+    <a url="/google/login/?next=%2Fsocial-login-complete%2F%3Forigin_protocol%3Dhttps%26origin_host%3Dwww.hackerearth.com%26redirect%3D/notes/powerful-tricks-with-calculation-modulo/&amp;update=google&amp;source=notes" title="Google" class="button btn-google btn-large float-right show-popup" minimal="true">
+    
+        <i class="fa fa-google-plus"></i> <span class="regular weight-600 less-margin-left">Log in with Google</span>
+    </a>
+    
+    <div class="clear"></div>
+</div>
+<div class="align-center standard-margin word-with-line-head">
+    <div class="word-with-line inline-block">
+        <span class="large light">or</span>
+    </div>
+</div>
+
+            
+            <form id="modal-login-form" name="login-form" method="POST" class="ajax-form medium-margin" ajax="/AJAX/login/">
+                
+
+    
+
+        
+
+        
+        <div class="wrapper small-wrapper">
+            <input type="text" placeholder="Username or Email" name="login" id="id_login">
+        </div>
+        <div class="wrapper small-wrapper">
+            <input type="password" placeholder="Password" name="password" id="id_password">
+        </div>
+        
+    
+    <input type="hidden" name="next" value="/notes/powerful-tricks-with-calculation-modulo/">
+     <div>
+        <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="link-3 show-hide-many float-right" show="password-reset" hide="login-form">Forgot Password?</a>
+        <div class="clear"></div>
+    </div>
+    <div class="align-center medium-margin">
+        <input type="submit" name="submit" clicked="Logging In.." value="Log in " class="button btn-orange fontawesome btn-largest weight-600 large">
+    </div>
+
+    <script type="text/javascript">
+        try{
+            grecaptcha.render('nocaptcha-recaptcha', {
+                'sitekey' : ''
+            });
+        }
+        catch(err){}
+
+    </script>
+
+
+
+            </form>
+            
+            <div class="align-center dark regular standard-margin dont-have-account">
+                Don't have an account? <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="link-13 show-hide-many regular" show="signup-form-div" hide="login-form"> Sign up</a>
+            </div>
+            
+        </div>
+
+        <div class="signup-form-div hidden">
+            
+                
+
+<div class="modal-social-signup align-center">
+    
+    
+    <a url="/facebook/login/?display=popup&amp;next=%2Fsocial-login-complete%2F%3Forigin_protocol%3Dhttps%26origin_host%3Dwww.hackerearth.com%26redirect%3D/notes/powerful-tricks-with-calculation-modulo/&amp;update=facebook&amp;source=notes" title="Facebook" class="button btn-facebook btn-large float-left show-popup" minimal="true">
+    
+        <i class="fa fa-facebook"></i> <span class="regular weight-600 less-margin-left">Join with Facebook</span>
+    </a>
+    
+    <a url="/google/login/?next=%2Fsocial-login-complete%2F%3Forigin_protocol%3Dhttps%26origin_host%3Dwww.hackerearth.com%26redirect%3D/notes/powerful-tricks-with-calculation-modulo/&amp;update=google&amp;source=notes" title="Google" class="button btn-google btn-large float-right show-popup" minimal="true">
+    
+        <i class="fa fa-google-plus"></i> <span class="regular weight-600 less-margin-left">Join with Google</span>
+    </a>
+    
+    <div class="clear"></div>
+</div>
+<div class="align-center standard-margin word-with-line-head">
+    <div class="word-with-line inline-block">
+        <span class="large light">or</span>
+    </div>
+</div>
+
+            
+
+            <form id="modal-signup-form" name="signup-form" method="POST" class="ajax-form medium-margin" ajax="/AJAX/hackerearth/signup/?source=notes&amp;next=/notes/powerful-tricks-with-calculation-modulo/">
+                
+
+    
+        
+        
+
+        
+        <div class="wrapper small-wrapper float-left">
+            <input id="id_first_name" type="text" placeholder="First Name" name="first_name" maxlength="100">
+        </div>
+
+        <div class="wrapper small-wrapper float-right">
+            <input id="id_last_name" type="text" placeholder="Last Name" name="last_name" maxlength="100">
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="wrapper small-wrapper">
+            <input id="id_email" type="text" placeholder="Email" name="email" maxlength="75">
+        </div>
+        <div class="wrapper small-wrapper">
+            <input type="password" placeholder="Password" name="password" id="id_password">
+        </div>
+    
+
+    <div class="align-center medium-margin">
+        <input type="submit" name="submit" clicked="Starting..." value="Start Now " class="button btn-orange fontawesome btn-largest weight-600 large">
+        <div class="light smaller less-margin-2 t-and-c">
+            By starting, you agree to HackerEarth's <a class="light" href="https://www.hackerearth.com/terms-of-service/" target="_blank">Terms of Service</a> and <a class="light" href="https://www.hackerearth.com/privacy/" target="_blank">Privacy Policy</a>.
+        </div>
+    </div>
+
+
+            </form>
+            <div class="align-center dark regular standard-margin dont-have-account">
+                Have an account? <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" class="link-13 show-hide-many regular" show="login-form" hide="signup-form-div"> Log in</a>
+            </div>
+        </div>
+
+        <div class="password-reset hidden">
+            <form name="password-reset" method="POST" class="ajax-form" ajax="/AJAX/password/reset/">
+                
+
+    
+    <p class="dark large"> A password reset link will be sent to the following email id</p>
+    
+    <div class="wrapper">
+        <input id="id_email" type="text" placeholder="Email" name="email" size="30">
+    </div>
+    
+    <div class="align-center medium-margin">
+        <input type="submit" name="submit" clicked="Sending.." value="Send Password Reset Link" class="button btn-orange btn-largest weight-600 large"> 
+    </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- override this block where we do not want the footer -->
+    
+    
+        
+        <div class="footer-large">
+    <div class="content align-center">
+        <div class="section">
+            <p class="category-title">About Us</p>
+            <ul>
+                <li><a target="_blank" href="http://blog.hackerearth.com/">Blog</a></li>
+                <li><a target="_blank" href="http://engineering.hackerearth.com/">Engineering Blog</a></li>
+
+                <li><a target="_blank" href="http://news.hackerearth.com/">Updates &amp; Releases </a></li>
+
+                <li><a target="_blank" href="https://www.hackerearth.com/team/">Team</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/careers/">Careers</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/in-media/">In the Press</a></li>
+            </ul>
+        </div>
+        <div class="section">
+            <p class="category-title">HackerEarth</p>
+            <ul>
+                <li><a target="_blank" href="https://www.hackerearth.com/docs/api/developers/code/legacy/">API</a></li>
+                <li><a target="_blank" href="https://chrome.google.com/webstore/detail/hackerearth-extension/aileihjgpakhkhedejpkpamnhpbnjhoj?ref=footer">Chrome Extension</a></li>
+                <li><a target="_blank" href="https://code.hackerearth.com/">CodeTable</a></li>
+                <li><a target="_blank" href="https://learn.hackerearth.com/">HackerEarth Academy</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/about/profile/">Developer Profile</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/resume/">Resume</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/badge/">Get Badges</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/campus/">Campus Ambassadors</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/getmehired/">Get Me Hired</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/privacy/">Privacy</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/terms-of-service/">Terms of Service</a></li>
+                <!--
+                <li><a target="_blank" href="http://status.hackerearth.com">System Status</a></li>
+                <li><a target="_blank" href="http://webchat.freenode.net/?channels=%23hackerearth">IRC</a></li>
+                -->
+            </ul>
+        </div>
+        <div class="section">
+            <p class="category-title">Developers</p>
+            <ul>
+                <li><a target="_blank" href="https://www.hackerearth.com/ama/">AMA</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/codemonk/">Code Monk</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/docs/wiki/developers/judge/">Judge Environment</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/docs/wiki/developers/solution-guide/">Solution Guide</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/docs/wiki/developers/setter-guide/">Problem Setter Guide</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/problems/">Practice Problems</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/challenges/">HackerEarth Challenges</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/college-challenges/">College Challenges</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/college-ranking/">College Ranking</a></li>
+                <li><a target="_blank" href="https://sprint.hackerearth.com/">Organise Hackathon</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/hackathon-handbook/">Hackathon Handbook</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/getstarted-competitive-programming/">Competitive Programming</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/getstarted-opensource/">Open Source</a></li>
+            </ul>
+        </div>
+        <div class="clear clear-show-tablet"></div>
+        <div class="section">
+            <p class="category-title">Employers</p>
+            <ul>
+                <li><a target="_blank" href="https://www.hackerearth.com/recruit/source/">Developer Sourcing</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/recruit/lateral/">Lateral Hiring</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/recruit/campus/">Campus Hiring</a></li>
+                <li><a target="_blank" href="https://sprint.hackerearth.com/">Hackathons</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/recruit/faq/">FAQs</a></li>
+                <li><a target="_blank" href="https://www.hackerearth.com/recruit/#customers-speak">Customers</a></li>
+                <!--<li><a target="_blank" href="//www.hackerearth.com/annual-report-2014/">Annual Report</a></li>-->
+            </ul>
+
+        </div>
+        <div class="section connect">
+            <p class="category-title">Reach us</p>
+            <div class="map standard-margin-right float-left">
+                <div style="overflow:hidden;height:130px;width:200px;">
+                    <div id="gmap_canvas" style="height: 130px; width: 200px; position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -244px; top: -14px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 12px; top: -14px;"></div></div></div></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -244px; top: -14px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 12px; top: -14px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div></div></div></div><div style="position: absolute; z-index: 0; transform: translateZ(0px); left: 0px; top: 0px;"><div style="overflow: hidden; width: 200px; height: 130px;"><img src="./Powerful tricks with calculation modulo_files/StaticMapService.GetMapImage" style="width: 200px; height: 130px;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="transform: translateZ(0px); position: absolute; left: 12px; top: -14px; transition: opacity 200ms ease-out;"><img src="./Powerful tricks with calculation modulo_files/vt" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -244px; top: -14px; transition: opacity 200ms ease-out;"><img src="./Powerful tricks with calculation modulo_files/vt(1)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div class="gm-style-pbc" style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%; transition-duration: 0.3s; opacity: 0; display: none;"><p class="gm-style-pbt">Use two fingers to move the map</p></div><div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 4; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" href="https://maps.google.com/maps?ll=12.933747,77.614942&amp;z=14&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img src="./Powerful tricks with calculation modulo_files/google4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div style="padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 146px; height: 88px; position: absolute; left: 5px; top: 5px; background-color: white;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Map data ©2016 Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img src="./Powerful tricks with calculation modulo_files/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 74px; bottom: 0px; width: 124px;"><div draggable="false" class="gm-style-cc" style="-webkit-user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span>Map data ©2016 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2016 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; -webkit-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><div style="width: 25px; height: 25px; overflow: hidden; display: none; margin: 10px 14px; position: absolute; top: 0px; right: 0px;"><img src="./Powerful tricks with calculation modulo_files/sv5.png" draggable="false" class="gm-fullscreen-control" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 112px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div><div draggable="false" class="gm-style-cc" style="-webkit-user-select: none; height: 14px; line-height: 14px; display: none; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_new" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@12.9337468,77.6149422,14z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="0" controlheight="0" style="margin: 10px; -webkit-user-select: none; position: absolute; display: none; bottom: 14px; right: 0px;"><div class="gmnoprint" style="display: none; position: absolute;"><div draggable="false" style="-webkit-user-select: none; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255);"><div title="Zoom in" style="position: relative;"><div style="overflow: hidden; position: absolute;"><img src="./Powerful tricks with calculation modulo_files/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: 0px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div><div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; background-color: rgb(230, 230, 230);"></div><div title="Zoom out" style="position: relative;"><div style="overflow: hidden; position: absolute;"><img src="./Powerful tricks with calculation modulo_files/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: 0px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div></div></div><div class="gm-svpc" controlwidth="28" controlheight="28" style="box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default; display: none; position: absolute; background-color: rgb(255, 255, 255);"><div style="position: absolute; left: 1px; top: 1px;"></div></div><div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;"><div title="Rotate map 90 degrees" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; cursor: pointer; display: none; background-color: rgb(255, 255, 255);"><img src="./Powerful tricks with calculation modulo_files/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div class="gm-tilt" style="width: 0px; height: 0px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; top: 0px; cursor: pointer; background-color: rgb(255, 255, 255);"><img src="./Powerful tricks with calculation modulo_files/tmapctrl4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 170px; height: 54px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; display: none; left: 0px; top: 0px;"><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show street map" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 8px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; -webkit-background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; min-width: 21px; font-weight: 500; background-color: rgb(255, 255, 255); background-clip: padding-box;">Map</div><div style="z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; left: 0px; top: 0px; text-align: left; display: none; background-color: white;"><div draggable="false" title="Show street map with terrain" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap; background-color: rgb(255, 255, 255);"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle; background-color: rgb(255, 255, 255);"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img src="./Powerful tricks with calculation modulo_files/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Terrain</label></div></div></div><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show satellite imagery" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 8px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; -webkit-background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-left-width: 0px; min-width: 39px; background-color: rgb(255, 255, 255); background-clip: padding-box;">Satellite</div><div style="z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; right: 0px; top: 0px; text-align: left; display: none; background-color: white;"><div draggable="false" title="Show imagery with street names" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap; background-color: rgb(255, 255, 255);"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle; background-color: rgb(255, 255, 255);"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img src="./Powerful tricks with calculation modulo_files/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Labels</label></div></div></div></div></div></div>
+                    <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+                </div>
+                <!--<a class="mixpanel-logo" href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>-->
+            </div>
+            <div class="reach">
+                <p class="small he-address">
+                Ground Floor, Salarpuria Business Center,<br>4th B Cross Road, 5th A Block,<br>Koramangala Industrial Layout,<br>Bangalore, Karnataka 560095, India.
+                </p>
+                <p class="small weight-600 less-margin-bottom">
+                    <i class="fa fa-envelope less-margin-right"></i>
+                    <a href="mailto:contact@hackerearth.com">contact@hackerearth.com</a>
+                    <br>
+                    <i class="fa fa-phone less-margin-right"></i>
+                    <a href="tel:+918041554695">+91-80-4155-4695</a>
+                    <br>
+                    <i class="fa fa-phone less-margin-right"></i>
+                    <a href="tel:+16504614192">+1-650-461-4192</a>
+                </p>
+                <div class="less-margin-2 social-links large">
+                    <a href="https://www.facebook.com/HackerEarth" class="float-left lighter medium-margin-right" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                    <a href="https://twitter.com/hackerearth" class="float-left lighter medium-margin-right" target="_blank"><i class="fa fa-twitter-square"></i></a>
+                    <a href="https://www.linkedin.com/company/hackerearth" class="float-left lighter medium-margin-right" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+                    <a href="https://plus.google.com/+Hackerearth" class="float-left lighter medium-margin-right" target="_blank"><i class="fa fa-google-plus-square"></i></a>
+                    <div class="clear"></div>
+                </div>
+            </div> <!-- reach -->
+        </div> <!-- connect -->
+        <div class="clear"></div>
+    </div> <!-- end content -->
+    <div class="footer-bottom-container lighter small">
+        <div class="footer-bottom">
+            
+            <img src="./Powerful tricks with calculation modulo_files/HE_identity.png">
+            
+            <span class="align-right float-right">© 2016 HackerEarth</span>
+        </div>
+    </div>
+
+</div> <!-- footer -->
+
+        
+    
+    
+
+    <div class="expand-box" id="recruiter-box" style="display: none;">
+        <div class="down-arrow"></div>
+        <ul class="no-margin">
+            
+            
+            
+            <a href="https://www.hackerearth.com/logout/?next=/notes/powerful-tricks-with-calculation-modulo/"><li>Logout</li></a>
+        </ul>
+    </div>
+
+    
+
+    <!-- Include notifications box -->
+    
+
+<div class="expand-box" id="notifications-box" style="display: none;">
+    <div class="down-arrow"></div>
+    <div class="notifications-title-container">
+        <div class="float-left weight-600">Notifications</div>
+        <div class="float-right">
+            <a href="https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/#" ajax="https://www.hackerearth.com/notifications/AJAX/mark-all-read/" class="notif-mark-all-read link smaller clicky-ajax">Mark All as Read</a>
+        </div>
+        <div class="clear"></div>
+    </div> <!-- notifications-title-container -->
+
+    <div class="notifications-container nice-scrollbar" id="notifications-container" tabindex="5000" style="overflow: hidden; outline: none;">
+    </div> <!-- notifications-container -->
+
+    <div class="smaller caps weight-600 align-center less-margin-2 less-margin-2-bottom">
+        <a class="link" href="https://www.hackerearth.com/notifications/">View All Notifications</a>
+    </div>
+<div id="ascrail2000" class="nicescroll-rails" style="width: 7px; z-index: 10; cursor: default; position: absolute; top: 1px; left: -7px; height: 0px; opacity: 1; display: none; background: rgb(238, 238, 238);"><div style="position: relative; top: 0px; float: right; width: 7px; height: 0px; border: none; border-radius: 0px; background-color: rgb(204, 204, 204); background-clip: padding-box;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails" style="height: 7px; z-index: 10; top: -6px; left: 0px; position: absolute; opacity: 1; cursor: default; display: none; background: rgb(238, 238, 238);"><div style="position: relative; top: 0px; height: 7px; width: 0px; border: none; border-radius: 0px; background-color: rgb(204, 204, 204); background-clip: padding-box;"></div></div></div> <!-- notifications-box -->
+
+
+    <!-- Load notification icon with unread count -->
+    <div id="header-notif-icon-trigger" class="load-pagelet hidden" target="header-notif-icon" ajax="/notifications/pagelets/header-notif-icon-count/" show-loader="false"></div>
+
+    
+    <!-- Load live events widget -->
+    <div id="live-events-trigger" class="load-pagelet hidden" target="live-events-trigger-data" ajax="/AJAX/live_feed_count/" show-loader="false"></div>
+    
+
+    
+
+    
+
+    
+    <div id="slashhack-widget-top" class="sliding-widget widget-top-right hidden">
+        <div class="widget-container hidden">
+            <div class="content">
+                <div class="large align-center  dark weight-600 less-margin-2 less-margin-2-bottom">
+                    <span>500 hackers will</span>
+                    <br>
+                    <span class="italic">code.build.hack</span>
+                </div>
+                <div class="sf-animation">
+                    <img src="./Powerful tricks with calculation modulo_files/sh_widget_1_banner.png">
+                </div>
+                <div class="less-margin-2 align-center">
+                    <a href="http://hck.re/hack/" target="_blank" class="button btn-orange-bright weight-600 inline-block">Check Details <i class="fa fa-angle-double-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="widget-header pointer">
+            <img src="./Powerful tricks with calculation modulo_files/sh_widget_1_header.png">
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="slashhack-widget-bottom" class="widget widget-bottom-left not-visible hidden" style="display: block;">
+        <div class="widget-container">
+            <div class="widget-logo inline-block float-left">
+                <span class="slash white-text weight-300">/</span>
+                <span class="title white-text weight-600">hack</span>
+            </div>
+            <div class="less-margin inline-block">
+                <a href="http://hck.re/hack/" target="_blank" class="button btn-orange-bright weight-600 inline-block">Check Details <i class="fa fa-angle-double-right"></i></a>
+            </div>
+            <div class="widget-close float-right align-right pointer">
+                <a>
+                    <i class="fa fa-times-circle fa-2x light"></i>
+                </a>
+            </div>
+            <div class="clear"></div>
+            <div class="large lighter weight-400 less-margin-3 medium-margin-bottom">
+                <span>500 hackers will <i>code.build.hack</i></span>
+                <br>
+                <span>at</span> <span class="weight-600">San Francisco</span>
+            </div>
+            
+        </div>
+    </div>
+    
+
+    
+
+
+
+        <!-- for adding extra html to the body, generally if you want to add absolute position that appear on click
+             then add them in this block. Please make sure that this block is not already being filled by the parent
+             template, if that is the case then to block.super after extending this block -->
+        
+            
+            
+        
+        
+        
+
+        <!-- Store any json returned for bigpipe -->
+        <div id="bigpipe-json" class="hidden">
+            {"e20d965": "/recommendation/pagelets/trending-card/?sensual=True"}
+        </div>
+
+        <!-- Store any json returned for bigpipe -->
+        <div id="user-prompt-json" class="hidden">
+            
+        </div>
+
+        <!-- realtime host -->
+        <div id="realtime-host" class="hidden">realtime.hackerearth.com</div>
+        <!-- realtime port -->
+        <div id="realtime-port" class="hidden">80</div>
+
+        <!-- client name for updating parts of page in realtime -->
+        <div id="pusher-channel-name-0" class="hidden">7d0003c159bb736102a3f76ae36cd558ca73e5f4</div>
+        
+
+        
+            <div id="common-notification">
+            </div>
+        
+        <!-- pusher app key -->
+        <div id="pusher-app-key" class="hidden">58a29e5cae2309f04b28</div>
+
+        <!-- ping url for user presence -->
+        <div id="ghost-ping-url" class="hidden" ajax="/ghost/ping/"></div>
+
+        
+        
+
+        <!-- url to get active lab features -->
+        
+
+        <!-- All the scripts go here -->
+        <script>
+            var CURRENT_PATH = "https://www.hackerearth.com/notes/powerful-tricks-with-calculation-modulo/";
+            var HISTORY = '';
+
+            // Make code constants available globally in JS
+            var MAP_LANG_TO_NAME = {"LUA": "Lua", "PASCAL": "Pascal", "CSHARP": "C#", "CPP": "C++", "PYTHON3": "Python 3", "POSTGRESQL": "PostgreSQL", "SCALA": "Scala", "PERL": "Perl", "HASKELL": "Haskell", "D": "D", "R": "R(RScript)", "CPP11": "C++11", "GO": "Go", "RUBY": "Ruby", "GROOVY": "Groovy", "LOLCODE": "LOLCODE", "LISP": "Lisp", "Text": "Text", "WHENEVER": "Whenever", "MYSQL": "MySQL", "OBJECTIVEC": "Objective-C", "PHP": "PHP", "JAVASCRIPT_UI": "JavaScript", "PYTHON": "Python", "JAVASCRIPT": "JavaScript(Rhino)", "VB": "Visual Basic", "vp": "N/A", "TEXTFILE": "Text", "JAVA8": "Java 8", "JAVASCRIPT_NODE": "JavaScript(Node.js)", "RACKET": "Racket", "HTML": "HTML", "SWIFT": "Swift", "RUST": "Rust", "FSHARP": "F#", "C": "C", "OCAML": "OCaml", "OCTAVE": "Octave", "CLOJURE": "Clojure", "BEFUNGE": "Befunge", "CSS": "CSS", "ERLANG": "Erlang", "JAVA": "Java", "LISP_SBCL": "Lisp (SBCL)", "JULIA": "Julia", "MSSQL": "MSSQL"};
+            var MAP_NAME_TO_LANG = {"Lisp (SBCL)": "LISP_SBCL", "Java": "JAVA", "Scala": "SCALA", "JavaScript": "JAVASCRIPT_UI", "Perl": "PERL", "Lua": "LUA", "JavaScript(Rhino)": "JAVASCRIPT", "MySQL": "MYSQL", "Erlang": "ERLANG", "LOLCODE": "LOLCODE", "C#": "CSHARP", "Whenever": "WHENEVER", "HTML": "HTML", "Rust": "RUST", "Octave": "OCTAVE", "Ruby": "RUBY", "Groovy": "GROOVY", "C": "C", "Python 3": "PYTHON3", "Lisp": "LISP", "F#": "FSHARP", "N/A": "vp", "C++": "CPP", "Racket": "RACKET", "Objective-C": "OBJECTIVEC", "Swift": "SWIFT", "R(RScript)": "R", "D": "D", "Clojure": "CLOJURE", "Befunge": "BEFUNGE", "Java 8": "JAVA8", "CSS": "CSS", "PostgreSQL": "POSTGRESQL", "Text": "TEXTFILE", "OCaml": "OCAML", "Julia": "JULIA", "JavaScript(Node.js)": "JAVASCRIPT_NODE", "Python": "PYTHON", "Pascal": "PASCAL", "Haskell": "HASKELL", "C++11": "CPP11", "Go": "GO", "Visual Basic": "VB", "PHP": "PHP", "MSSQL": "MSSQL"};
+        </script>
+
+        
+        <!-- alljs: static_media/js/jquery-1.7.min.patched.js static_media/js/jquery.color.js static_media/js/jquery.elastic.js static_media/js/ajaxSend.js  static_media/js/jquery.inview.js  static_media/js/tooltip/jquery.tipTip.modified.js  static_media/offline/offline.min.js  static_media/js/watermark.min.js  static_media/history.js?v=0.1/scripts/bundled/html4html5/jquery.history.js  static_media/js/jquery.nicescroll.js  static_media/simplemodal/simplemodal.js static_media/js/jquery.sticky.js static_media/js/pusher.min.js static_media/js/ifvisible.min.js static_media/ghost/ghost.js static_media/feeds/feeds.js static_media/base/progress_bar.js -->
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/alljs.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/jquery.mCustomScrollbar.concat.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/base1.0.1.js" crossorigin="anonymous"></script>
+
+        
+
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/bigpipe.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/pusher_realtime.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/userprompt.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/search.1.0.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/history.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/commentUtils.js" crossorigin="anonymous"></script>
+        <script src="./Powerful tricks with calculation modulo_files/api.js" async="" defer=""></script>
+        <script src="./Powerful tricks with calculation modulo_files/offline.min.js" crossorigin="anonymous"></script>
+
+        
+
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/lab.js" crossorigin="anonymous"></script>
+
+        
+
+        <script>
+            Offline.options = {
+                interceptRequests: false,
+                requests: false,
+            };
+        </script>
+
+        <script>
+            // do all maps stuff here
+            function initializeMaps(){
+
+                // Call other map functions
+                try{
+                    window.mapStuff();
+                } catch(err){
+                }
+
+                try{
+                    // Display footer maps
+                    var myOptions = {
+                        zoom:14,
+                        center:new google.maps.LatLng(12.9337468, 77.6149422),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    var map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+                    var marker = new google.maps.Marker({
+                                map: map,
+                                position: new google.maps.LatLng(12.9337468, 77.6149422)
+                            });
+                    var infowindow = new google.maps.InfoWindow({
+                                    content:"<b>HackerEarth Technologies</b>"
+                                });
+                    google.maps.event.addListener(marker, "click", function(){
+                            infowindow.open(map,marker);
+                    });
+
+                }
+                catch(e){}
+            }
+
+            function loadMaps() {
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&callback=initializeMaps'
+                document.body.appendChild(script);
+            }
+
+            $(document).ready(function(){
+                loadMaps();
+            });
+
+        </script>
+        
+
+
+<script>
+$(document).ready(function (){
+    $('#header-notif-icon-trigger').click();
+
+    
+    $('#live-events-trigger').click();
+    
+
+    
+    
+    
+    
+    
+
+        $('#slashhack-widget-top .widget-header').on('click', function(){
+            $('#slashhack-widget-top .widget-container .content').addClass('hidden');
+            $('#slashhack-widget-top .widget-container .content').promise().done(function(){
+                $('#slashhack-widget-top .widget-container').toggle('slide', function(){
+                    $('#slashhack-widget-top .widget-container .content').removeClass('hidden');
+                });
+            });
+        });
+        $('#slashhack-widget-top .widget-container .content .sf-animation').find('img').live('inview', function(){
+            $(this).attr('src',$(this).attr('src'));
+        });
+        var check_slashhack_cookie = readCookie('slashhack_widget_seen');
+        if (!check_slashhack_cookie){
+            $('#slashhack-widget-bottom').delay(10000).slideToggle();
+        }
+        $('#slashhack-widget-bottom .widget-container .widget-close').on('click', function(){
+            createCookie('slashhack_widget_seen', 'true', 180);
+            $('#slashhack-widget-bottom').slideToggle();
+        });
+    
+
+});
+$(window).load(function(){
+    var us_timezones = 'America';
+    if(USER_TIMEZONE.indexOf(us_timezones) > -1){
+        $('#slashhack-widget-top').show();
+        var check_slashhack_cookie = readCookie('slashhack_widget_seen');
+        if(!check_slashhack_cookie){
+            $('#slashhack-widget-bottom').removeClass('not-visible');
+            $('#slashhack-widget-bottom').show();
+        }
+    }
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    var m_links = {};
+    var m_elements = {
+        '#modal-login-form input[type=submit]': 'Modal Email Login',
+        '#modal-signup-form input[type=submit]': 'Modal Email Signup',
+        '.modal-social-login .btn-facebook': 'Modal Facebook Login',
+        '.modal-social-login .btn-google': 'Modal Google Login',
+        '.modal-social-signup .btn-facebook': 'Modal Facebook Signup',
+        '.modal-social-signup .btn-google': 'Modal Google Signup',
+    };
+    
+    for (var key in m_elements) {
+        $(key).live('click', {'key': key }, function(e) {
+            var key = e.data.key;
+            mixpanel.track('Click', {'name': m_elements[key]});
+        });
+    }
+    for (var key in m_links) {
+        mixpanel.track_links(key, 'Click', {'name': m_links[key]});
+    }
+});
+</script>
+
+
+
+
+
+<!-- Facebook Pixel Code -->
+<script type="text/javascript">
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '802574803157043');
+fbq('track', "PageView");
+</script>
+<noscript>&lt;img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=802574803157043&amp;ev=PageView&amp;noscript=1"
+/&gt;</noscript>
+<!-- End Facebook Pixel Code -->
+
+
+
+        <script>
+            // Used in search
+            var is_user_logged_in = false;
+        </script>
+
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/detect_timezone.js" crossorigin="anonymous"></script>
+        <script>
+
+            function setTimezoneCookie(detected_user_tz) {
+                /* Sets the detected user timezone as a cookie in the browser.
+                   If someone changes it or removes it, a sanity check is
+                   performed and the cookie is reset.
+
+                   This cookie is set for ready availability of user timezone
+                   in the backend.
+                */
+
+                const USER_TIMEZONE_COOKIE = 'user_tz';
+                // Try to get the existing user timezone cookie stored
+                // in the browser.
+                user_tz = readCookie(USER_TIMEZONE_COOKIE);
+
+                // Flag to determine whether a new cookie has to be created.
+                create_cookie = false;
+
+                if(user_tz) {
+                    if(user_tz !== detected_user_tz) {
+                        // If someone has changed the cookie in some way, we
+                        // set a new cookie.
+                        eraseCookie(USER_TIMEZONE_COOKIE);
+                        create_cookie = true;
+                    }
+                } else {
+                    create_cookie = true;
+                }
+
+                // Create a new cookie if create_cookie flag is set.
+                createCookie(USER_TIMEZONE_COOKIE, detected_user_tz, 1);
+
+            }
+            $(document).ready(function(){
+                var timezone = jstz.determine_timezone(); // Now you have an instance of the TimeZone object.
+                // Set as a cookie in browser for easy access in backend.
+                setTimezoneCookie(timezone.name());
+
+                // Set as a js variable for easy access across frontend.
+                USER_TIMEZONE = timezone.name()
+
+                
+                
+                
+
+                
+
+                
+                    $.ajax({
+                        type: "POST",
+                        url:"/users/AJAX/set-timezone/",
+                        data: {
+                        'timezone': timezone.name(),
+                        },
+                    });
+                
+            });
+        </script>
+
+        
+
+        <script type="text/javascript">
+            
+            $(document).ready(function(){
+                //mixpanel delegate links custom method
+                mixpanel.delegate_links = function (parent, selector, event_name, properties) {
+                    properties = properties || {};
+                    parent = parent || document.body;
+                    parent = $(parent);
+                    parent.on('click', selector, function (event) {
+                        var new_tab = event.which === 2 || event.metaKey || event.target.target === '_blank' || this.target === '_blank';
+                        properties.url = event.target.href || this.href;
+                        function callback() {
+                            if (new_tab) {
+                                return;
+                            }
+                            window.location = properties.url;
+                        }
+                        if (!new_tab) {
+                            event.preventDefault();
+                            setTimeout(callback, 300);
+                        }
+                        mixpanel.track(event_name, properties, callback);
+                    });
+                };
+            });
+            
+        </script>
+
+        
+<script type="text/javascript" src="./Powerful tricks with calculation modulo_files/prettifyall.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./Powerful tricks with calculation modulo_files/votes.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./Powerful tricks with calculation modulo_files/tagging_autocomplete.js" crossorigin="anonymous"></script>
+
+<script>
+    $("#notes-title-bar").sticky({
+        bottomSpacing: 600,
+    });
+    $("#notes-title-bar").width($("#notes-left-container").width()+ 'px');
+</script>
+
+<script>
+$(document).ready(function() {
+    styleCode();
+});
+</script>
+
+
+        
+        <!-- google analytics start -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-34729975-1', 'auto');
+            ga('require', 'displayfeatures');
+            
+            ga('send', 'pageview');
+        </script>
+        <!-- google analytics end -->
+        
+
+        
+        <!-- Google Code for Remarketing Tag -->
+        <!--
+        Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+        -->
+        <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 961497631;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+        </script>
+        <script type="text/javascript" src="./Powerful tricks with calculation modulo_files/conversion.js">
+        </script><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./Powerful tricks with calculation modulo_files/saved_resource.html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+        <noscript>
+        &lt;div style="display:inline;"&gt;
+        &lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/961497631/?value=0&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+        &lt;/div&gt;
+        </noscript>
+        
+
+        
+        <!-- mixpanel analytics start -->
+        <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);mixpanel.init("4c30b8635363027dfb780d5a61785112");</script>
+        <!-- mixpanel analytics end -->
+        <script type="text/javascript">
+            
+                
+                    mixpanel.unregister("username");
+                    mixpanel.unregister("email");
+                    mixpanel.unregister("date_of_joining");
+                    mixpanel.unregister("user_bucket");
+                    mixpanel.unregister("company");
+                    mixpanel.unregister("is_recruiter");
+                    mixpanel.register({
+                        "url_path": "/notes/powerful-tricks-with-calculation-modulo/"
+                    });
+                
+            
+        </script>
+        
+
+        <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="Facebook Cross Domain Communication Frame" aria-hidden="true" tabindex="-1" id="fb_xdm_frame_https" src="./Powerful tricks with calculation modulo_files/bz-D0tzmBsw.html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+        <script>
+            <!-- facebook button -->
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+            <!-- twitter button -->
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+            <!-- google+ button -->
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+
+        
+        <script>
+        // Include the UserVoice JavaScript SDK (only needed once on a page)
+        UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/5F90ycbP4JOg1fOUoELScA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+
+        //
+        // UserVoice Javascript SDK developer documentation:
+        // https://www.uservoice.com/o/javascript-sdk
+        //
+
+        // Set colors
+        UserVoice.push(['set', {
+          accent_color: '#448dd6',
+          trigger_color: 'white',
+          trigger_background_color: 'rgba(46, 49, 51, 0.6)'
+        }]);
+
+        // Identify the user and pass traits
+        // To enable, replace sample data with actual user traits and uncomment the line
+        UserVoice.push(['identify', {
+          //email:      'john.doe@example.com', // User’s email address
+          //name:       'John Doe', // User’s real name
+          //created_at: 1364406966, // Unix timestamp for the date the user signed up
+          //id:         123, // Optional: Unique id of the user (if set, this should not change)
+          //type:       'Owner', // Optional: segment your users by type
+          //account: {
+          //  id:           123, // Optional: associate multiple users with a single account
+          //  name:         'Acme, Co.', // Account name
+          //  created_at:   1364406966, // Unix timestamp for the date the account was created
+          //  monthly_rate: 9.99, // Decimal; monthly rate of the account
+          //  ltv:          1495.00, // Decimal; lifetime value of the account
+          //  plan:         'Enhanced' // Plan name for the account
+          //}
+        }]);
+
+        // Add default trigger to the bottom-right corner of the window:
+        UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
+
+        // Or, use your own custom trigger:
+        //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
+
+        // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+        UserVoice.push(['autoprompt', {}]);
+        </script>
+        
+    
+
+</div><div id="tiptip_holder" style="max-width:200px;"><div id="tiptip_arrow"><div id="tiptip_arrow_inner"></div></div><div id="tiptip_content"></div></div><script type="text/javascript" src="./Powerful tricks with calculation modulo_files/js"></script><div class="offline-ui offline-ui-up"><div class="offline-ui-content"></div></div><div class="offline-ui offline-ui-up"><div class="offline-ui-content"></div></div><iframe name="oauth2relay578016516" id="oauth2relay578016516" src="./Powerful tricks with calculation modulo_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><div data-html2canvas-ignore="true" class="uv-icon uv-bottom-right"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="39px" height="39px" viewBox="0 0 39 39" enable-background="new 0 0 39 39" xml:space="preserve">
+<g>
+	<path class="uv-bubble-background" fill="rgba(46, 49, 51, 0.6)" d="M31.425,34.514c-0.432-0.944-0.579-2.007-0.591-2.999c4.264-3.133,7.008-7.969,7.008-13.409
+		C37.842,8.658,29.594,1,19.421,1S1,8.658,1,18.105c0,9.446,7.932,16.79,18.105,16.79c1.845,0,3.94,0.057,5.62-0.412
+		c0.979,1.023,2.243,2.3,2.915,2.791c3.785,2.759,7.571,0,7.571,0S32.687,37.274,31.425,34.514z" style="fill: rgba(46, 49, 51, 0.6);"></path>
+	<g>
+		<g>
+			<path class="uv-bubble-foreground" fill="#FFFFFF" d="M16.943,19.467c0-3.557,4.432-3.978,4.432-6.058c0-0.935-0.723-1.721-2.383-1.721
+				c-1.508,0-2.773,0.725-3.709,1.87l-2.441-2.743c1.598-1.9,4.01-2.924,6.602-2.924c3.891,0,6.271,1.959,6.271,4.765
+				c0,4.4-5.037,4.732-5.037,7.265c0,0.481,0.243,0.994,0.574,1.266l-3.316,0.965C17.303,21.459,16.943,20.522,16.943,19.467z
+				 M16.943,26.19c0-1.326,1.114-2.441,2.44-2.441c1.327,0,2.442,1.115,2.442,2.441c0,1.327-1.115,2.441-2.442,2.441
+				C18.058,28.632,16.943,27.518,16.943,26.19z" style="fill: white;"></path>
+		</g>
+	</g>
+</g>
+</svg>
+</div><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;"></iframe></body></html>
