@@ -1,0 +1,39 @@
+ll multimod(ll a,ll b,ll m) {
+    ll ans=0LL;
+    a%=m,b%=m;
+    while(b) {
+        if(b&1LL) ans=m-ans>a?ans+a:ans+a-m;
+        b>>=1LL;
+        a=(m-a)>a?a+a:a+a-m;
+    }
+    return ans;
+}
+
+ll bigmod(ll b,ll p,ll m) {
+    ll ret=1LL;
+    while(p) {
+        if( p&1LL ) ret=multimod(ret,b,m);
+        b=multimod(b,b,m);
+        p>>=1LL;
+    }
+    return ret;
+}
+
+bool isProbablePrime(ll n,int k) {
+    if( n<2 ) return false;
+    if( n!=2 && n%2==0) return false;
+    if( n==2 ) return true;
+    ll s=n-1LL;
+    while(s%2==0)s>>=1LL;
+    while(k--) {
+        ll a=(rand()%(n-1))+1;
+        ll tmp=s;
+        ll mod=bigmod(a,tmp,n);
+        while(tmp!=n-1LL && mod!=1LL && mod!=n-1LL) {
+            mod=multimod(mod,mod,n);
+            tmp=tmp<<1LL;
+        }
+        if(mod!=n-1LL && tmp%2LL==0) return false;
+    }
+    return true;
+}
