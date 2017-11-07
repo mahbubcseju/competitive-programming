@@ -15,7 +15,8 @@ Input starts with an integer T (≤ 10000), denoting the number of test cases.
 Each case starts with a line containing an integer n (1 ≤ n ≤ 12). Each of the next n lines contains two integers pi (1 < pi < 40,
 pi is a prime) and ri (0 < ri < pi). All pi will be distinct.
 Output
-For each case, print the case number and the minimum possible value of L that satisfies the above conditions. If there is no solution, print 'Impossible'.
+For each case, print the case number and the minimum possible value of L that satisfies the above conditions. 
+If there is no solution, print 'Impossible'.
 2
 3
 5 4
