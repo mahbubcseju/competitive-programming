@@ -2,14 +2,18 @@
 In 'MonkeyLand', there is a traditional game called "Bamboo Climbing". The rules of the game are as follows:
 1)       There are N monkeys who play this game and there are N bamboos of equal heights. Let the height be L meters.
 2)       Each monkey stands in front of a bamboo and every monkey is assigned a different bamboo.
-3)       When the whistle is blown, the monkeys start climbing the bamboos and they are not allowed to jump to a different bamboo throughout the game.
-4)       Since they are monkeys, they usually climb by jumping. And in each jump, the ith monkey can jump exactly pi meters (pi is a prime). After a while when a monkey finds that he cannot jump because one more jump may get him out of the bamboo, he reports the remaining length ri that he is not able to cover.
+3)       When the whistle is blown, the monkeys start climbing the bamboos and they are not allowed
+            to jump to a different bamboo throughout the game.
+4)       Since they are monkeys, they usually climb by jumping. And in each jump, the ith monkey can
+          jump exactly pi meters (pi is a prime). After a while when a monkey finds that he cannot jump
+        because one more jump may get him out of the bamboo, he reports the remaining length ri that he is not able to cover.
 5)       And before the game, each monkey is assigned a distinct pi.
 6)       The monkey, who has the lowest ri, wins.
 Now, the organizers have found all the information of the game last year, but unluckily they haven't found the height of the bamboo. To be more exact, they know N, all pi and corresponding ri, but not L. So, you came forward and found the task challenging and so, you want to find L, from the given information.
 Input
 Input starts with an integer T (≤ 10000), denoting the number of test cases.
-Each case starts with a line containing an integer n (1 ≤ n ≤ 12). Each of the next n lines contains two integers pi (1 < pi < 40, pi is a prime) and ri (0 < ri < pi). All pi will be distinct.
+Each case starts with a line containing an integer n (1 ≤ n ≤ 12). Each of the next n lines contains two integers pi (1 < pi < 40,
+pi is a prime) and ri (0 < ri < pi). All pi will be distinct.
 Output
 For each case, print the case number and the minimum possible value of L that satisfies the above conditions. If there is no solution, print 'Impossible'.
 2
