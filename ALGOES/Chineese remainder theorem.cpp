@@ -9,7 +9,9 @@ In 'MonkeyLand', there is a traditional game called "Bamboo Climbing". The rules
         because one more jump may get him out of the bamboo, he reports the remaining length ri that he is not able to cover.
 5)       And before the game, each monkey is assigned a distinct pi.
 6)       The monkey, who has the lowest ri, wins.
-Now, the organizers have found all the information of the game last year, but unluckily they haven't found the height of the bamboo. To be more exact, they know N, all pi and corresponding ri, but not L. So, you came forward and found the task challenging and so, you want to find L, from the given information.
+Now, the organizers have found all the information of the game last year, but unluckily they haven't found the height of the bamboo. 
+To be more exact, they know N, all pi and corresponding ri, but not L. 
+So, you came forward and found the task challenging and so, you want to find L, from the given information.
 Input
 Input starts with an integer T (≤ 10000), denoting the number of test cases.
 Each case starts with a line containing an integer n (1 ≤ n ≤ 12). Each of the next n lines contains two integers pi (1 < pi < 40,
