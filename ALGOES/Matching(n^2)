@@ -1,0 +1,84 @@
+#include<bits/stdc++.h>
+#define sc(a) scanf("%d",&a)
+using namespace std;
+ 
+vector<int >a[102];
+int up[204];
+int vis[204];
+int bfs(int sc)
+{
+    for(  int i=0; i<a[sc].size(); i++)
+    {
+        int l=a[sc][i];
+        if(vis[l])continue;
+        vis[l]=1;
+        if(up[l]==-1||bfs(up[l]))
+        {
+            up[l]=sc;
+            return 1;
+ 
+ 
+        }
+ 
+ 
+ 
+    }
+ 
+    return 0;
+}
+int bpm(int n)
+{
+ 
+    int co=0;
+    for(int i=1; i<=n; i++)
+    {
+        memset(vis,0,sizeof(vis));
+        if(bfs(i))co++;
+    }
+ 
+    return co;
+}
+ 
+int main()
+{
+    int tc;
+    sc(tc);
+    for(int t=1; t<=tc; t++)
+    {
+        int m,n;
+        sc(m);
+        int  m1[m+1];
+ 
+        for(int i=1; i<=m; i++)
+        {
+            sc(m1[i]);
+        }
+        sc(n);
+        int  n1[n+1];
+        for(int i=1; i<=n; i++)
+        {
+            sc(n1[i]);
+        }
+        for(int i=1; i<=m; i++)
+        {
+            for(int j=1; j<=n; j++)
+            {
+                if(n1[j]%m1[i]==0)
+                {
+                    a[i].push_back(m+j);
+                }
+ 
+            }
+        }
+        memset(up,-1,sizeof up);
+        int y=bpm(m);
+ 
+ 
+        printf("Case %d: %d\n",t,y);
+        for(int i=0; i<=m; i++)a[i].clear();
+    }
+ 
+ 
+ 
+    return 0;
+}
