@@ -1,0 +1,63 @@
+#define mx 5000000000
+#define md 10000000000007ll
+ 
+#define maxp 100000000000000004
+typedef pair<int , int >P;
+typedef vector<int >V;
+ 
+////////define value/////
+int val[(1<<15)],n,a[20][20];
+int dp[(1<<15)];
+int fl[(1<<15)];
+int go(int musk)
+{
+    if(musk==0)return 0;
+ 
+    int &ret=dp[musk];
+    if(fl[musk]!=-1)return ret;
+    fl[musk]=1;
+    ret=mx;
+    for(int i=musk;i!=0;i=(i-1)&musk)
+    {
+        ret=min(ret,val[i]+go(i^musk));
+    }
+ 
+    return ret;
+}
+int main()
+{
+    int tc,cs=0;
+    I(tc);
+    while(tc--)
+    {
+        I(n);
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                I(a[i][j]);
+            }
+        }
+        for(int i=1;i<(1<<n);i++)
+        {
+            int res=0;
+            for(int j=0;j<n;j++)
+            {
+                if(!(i&(1<<j)))continue;
+                for(int k=0;k<n;k++)
+                {
+                    if(!(i&(1<<k)))continue;
+                    res+=a[j][k];
+                }
+            }
+            val[i]=res;
+        }
+        SETR(fl);
+        int ans=go((1<<n)-1);
+        PT(++cs);
+        PI(ans);
+ 
+    }
+    return 0;
+}
+ 
