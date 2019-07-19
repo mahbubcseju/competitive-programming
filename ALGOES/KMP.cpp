@@ -1,5 +1,7 @@
 /*
-A string is a finite sequence of symbols that are chosen from an alphabet. In this problem you are given two non-empty strings A and B, both contain lower case English alphabets. You have to find the number of times B occurs as a substring of A.
+A string is a finite sequence of symbols that are chosen from an alphabet. In this problem you
+are given two non-empty strings A and B, both contain lower case English alphabets. You have to
+find the number of times B occurs as a substring of A.
 1
 abc
 abc
@@ -9,7 +11,7 @@ case 1: 1
 #include<bits/stdc++.h>
 using namespace std;
 string a,b;
-   int pat[1000006];
+int pat[1000006];
 void pattern()
 {
     int l=b.size();
