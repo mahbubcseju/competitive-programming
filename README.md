@@ -11,4 +11,4 @@
 - Number theory
 
 ## Solutions of my solved problem in Codeforces using these algorithms
-1. https://github.com/mahbubcseju/Programming-Problem-Solutions
+1. https://github.com/mahbubcseju/Programming-Problem-Solutions/tree/master/Codeforces
